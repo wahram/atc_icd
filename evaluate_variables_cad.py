@@ -4,6 +4,7 @@ import csv
 from atcs import *
 import sys
 from itertools import product
+from cli import progress
 from icd import is_cad
 
 true_positive = 0
@@ -28,7 +29,7 @@ for row in reader:
 
 
 
-params = product(
+params = list(product(
     [i for i in range(0, 101, 50)], # ranolazin
     [i for i in range(0, 101, 50)], # nitrat
     [i for i in range(0, 101, 50)], # trapidil
@@ -38,8 +39,10 @@ params = product(
     [i for i in range(0, 101, 50)], # calciumkanalblocker
     [i for i in range(0, 101, 50)], # statin
     [i for i in range(0, 101, 50)]  # ezetimib
-)
+))
 
+params_max = len(params)
+cycle_counter = 0
 for param in params:
     ranolazin_score, nitrat_score, trapidil_score, ass_score, p2y12_inhibitor_score, betablocker_score, \
     calciumkanalblocker_score, statin_score, ezetimib_score = param
@@ -120,3 +123,5 @@ for param in params:
         true_negative = 0
         false_positive = 0
         false_negative = 0
+        cycle_counter += 1
+        progress(params_max, cycle_counter)
