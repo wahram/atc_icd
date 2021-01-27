@@ -22,7 +22,7 @@ p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor
 betablocker = metoprolol | bisoprolol | carvedilol | atenolol | nebivolol
 statin = lovastatin | pravastatin | simvastatin | atorvastatin | rosuvastatin
 ace_hemmer = captopril | enalapril | lisinopril | ramipril
-at1_antagonist =
+at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
 
 cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac_systemic | almotriptan | eletriptan | frovatriptan | naratriptan | \
                       rizatriptan | sumatriptan | zolmitriptan

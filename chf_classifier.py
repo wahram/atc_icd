@@ -25,6 +25,7 @@ ace_hemmer = captopril | enalapril | lisinopril | ramipril
 hf_drug_without_herzglykosid = sacubitril_valsartan | eplerenon | betablocker | spironolacton | ivabradin | dihydropyridin | ace_hemmer
 p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor
 schleifendiuretikum = furosemid | torasemid
+at1_antagonist = at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
 
 heart_failure_contraindicated = celecoxib | diclofenac_systemic | domperidon | dronedaron | eletriptan | etoricoxib \
                              | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil

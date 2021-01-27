@@ -13,7 +13,7 @@ molsidomin = {'C01DX12'}
 
 pentaerythrityltetranitrat = {
     'C01DA05',
-    'C01DA55'   # Pentaerythrityltetranitrat Kombinationen
+    'C01DA55'  # Pentaerythrityltetranitrat Kombinationen
 }
 
 trapidil = {'C01DX11'}
@@ -82,7 +82,7 @@ bisoprolol = {
 carvedilol = {
     'C07AG02',  # Carvedilol
     'C07FX06',  # Carvedilol und Ivabradin
-    'C07BG02'   # Carvedilol und Thiazide
+    'C07BG02'  # Carvedilol und Thiazide
 }
 
 atenolol = {
@@ -226,12 +226,56 @@ ezetimib = {
 
 sacubitril_valsartan = {'C09DX04'}
 
-C09CA01		Losartan
-C09CA03		Valsartan
-C09CA04		Irbesartan
-C09CA06		Candesartan
-C09CA07		Telmisartan
-C09CA08		Olmesartanmedoxomil
+losartan = {
+    'C09CA01',  # Losartan
+    'C09DA01',  # Losartan und Diuretika
+    'C09DA21',  # Losartan und Hydrochlorothiazid
+    'C09DB06'   # Losartan und Amlodipin
+}
+
+valsartan = {
+    'C09CA03',  # Valsartan
+    'C09DA03',  # Valsartan und Diuretika
+    'C09DA23',  # Valsartan und Hydrochlorothiazid
+    'C09DB01',  # Valsartan und Amlodipin
+    'C09DB08',  # Valsartan und Lercanidipin
+    'C09DX01',  # Valsartan, Amlodipin und Hydrochlorothiazid
+    'C09DX02',  # Valsartan und Aliskiren
+    'C09DX04',  # Valsartan und Sacubitril
+    'C09DX05',  # Valsartan und Nebivolol
+    'C10BX10'   # Rosuvastatin und Valsartan
+}
+
+irbesartan = {
+    'C09CA04',  # Irbesartan
+    'C09DA04',  # Irbesartan und Diuretika
+    'C09DA24',  # Irbesartan und Hydrochlorothiazid
+    'C09DB05',  # Irbesartan und Amlodipin
+    'C09DX07'   # Irbesartan, Amlodipin und Hydrochlorothiazid
+}
+
+candesartan = {
+    'C09CA06',  # Candesartan
+    'C09DA06',  # Candesartan und Diuretika
+    'C09DA26',  # Candesartan und Hydrochlorothiazid
+    'C09DB07',  # Candesartan und Amlodipin
+    'C09DX06'   # Candesartan, Amlodipin und Hydrochlorothiazid
+}
+
+telmisartan = {
+    'C09CA07',  # Telmisartan
+    'C09DA07',  # Telmisartan und Diuretika
+    'C09DA27',  # Telmisartan und Hydrochlorothiazid
+    'C09DB04'   # Telmisartan und Amlodipin
+}
+
+olmesartan = {
+    'C09CA08',  # Olmesartanmedoxomil
+    'C09DA08',  # Olmesartanmedoxomil und Diuretika
+    'C09DA28',  # Olmesartanmedoxomil und Hydrochlorothiazid
+    'C09DB02',  # Olmesartanmedoxomil und Amlodipin
+    'C09DX03'   # Olmesartanmedoxomil, Amlodipin und Hydrochlorothiazid
+}
 
 eplerenon = {'C03DA04'}
 
@@ -346,7 +390,7 @@ methylphenidat = {'N06BA04'}
 
 moxonidin = {
     'C02AC05',  # Moxonidin
-    'C02LC05'   # Moxonidin und Diuretika
+    'C02LC05'  # Moxonidin und Diuretika
 }
 
 parecoxib = {'M01AH04'}
@@ -356,14 +400,14 @@ pioglitazon = {
     'A10BD06',  # Glimepirid und Pioglitazon
     'A10BD09',  # Pioglitazon und Alogliptin
     'A10BD12',  # Pioglitazon und Sitagliptin
-    'A10BD05'   # Pioglitazon und Metformin
+    'A10BD05'  # Pioglitazon und Metformin
 }
 
 tadalafil = {
     'C02KX07',  # Tadalafil
     'C02KX52',  # Ambrisentan und Tadalafil
     'G04BE08',  # Tadalafil
-    'G04CA54'   # Tamsulosin und Tadalafil
+    'G04CA54'  # Tamsulosin und Tadalafil
 }
 
 naftidrofuryl = {'C04AX21'}
@@ -384,7 +428,7 @@ zolmitriptan = {'N02CC03'}
 
 allopurinol = {
     'M04AA01',  # Allopurinol
-    'M04AA51'   # Allopurinol, Kombinationen
+    'M04AA51'  # Allopurinol, Kombinationen
 }
 
 febuxostat = {'M04AA03'}
@@ -399,7 +443,7 @@ rasburicase = {'V03AF07'}
 
 xipamid = {
     'C03BA10',  # Xipamid
-    'C03EA15'   # Xipamid und Triamteren
+    'C03EA15'  # Xipamid und Triamteren
 }
 
 hydrochlorothiazid = {
@@ -439,5 +483,5 @@ hydrochlorothiazid = {
     'C09DX06',  # Candesartan, Amlodipin und Hydrochlorothiazid
     'C09DX07',  # Irbesartan, Amlodipin und Hydrochlorothiazid
     'C09XA52',  # Aliskiren und Hydrochlorothiazid
-    'C09XA54'   # Aliskiren, Amlodipin und Hydrochlorothiazid
+    'C09XA54'  # Aliskiren, Amlodipin und Hydrochlorothiazid
 }

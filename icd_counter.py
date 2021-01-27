@@ -1,4 +1,4 @@
-# calculate how often a specific diagnosis occurs
+# calculate how often a specific ICD-Code occurs. Note: I20.0 != I20.00
 import csv
 
 file = open('atc_icd_excluded.csv')

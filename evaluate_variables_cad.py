@@ -27,18 +27,16 @@ data = []
 for row in reader:
     data.append(dict(zip(headers, row)))
 
-
-
 params = list(product(
-    [i for i in range(0, 101, 50)], # ranolazin
-    [i for i in range(0, 101, 50)], # nitrat
-    [i for i in range(0, 101, 50)], # trapidil
-    [i for i in range(0, 101, 50)], # ass
-    [i for i in range(0, 101, 50)], # p2y12_inhibitor
-    [i for i in range(0, 101, 50)], # betablocker
-    [i for i in range(0, 101, 50)], # calciumkanalblocker
-    [i for i in range(0, 101, 50)], # statin
-    [i for i in range(0, 101, 50)]  # ezetimib
+    [i for i in range(0, 101, 50)],  # ranolazin
+    [i for i in range(0, 101, 50)],  # nitrat
+    [i for i in range(0, 101, 50)],  # trapidil
+    [i for i in range(0, 101, 50)],  # ass
+    [i for i in range(0, 101, 50)],  # p2y12_inhibitor
+    [i for i in range(0, 101, 50)],  # betablocker
+    [i for i in range(0, 101, 50)],  # calciumkanalblocker
+    [i for i in range(0, 101, 50)],  # statin
+    [i for i in range(0, 101, 50)]   # ezetimib
 ))
 
 params_max = len(params)
@@ -115,6 +113,7 @@ for param in params:
               ranolazin_score, nitrat_score, trapidil_score, ass_score,
               p2y12_inhibitor_score, betablocker_score, calciumkanalblocker_score,
               statin_score, ezetimib_score, file=f)
+
         print('True Positives:', true_positive, 'True Negatives:', true_negative,
               'False Positives:', false_positive,
               'False Negatives:',
