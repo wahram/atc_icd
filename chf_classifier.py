@@ -31,7 +31,7 @@ heart_failure_contraindicated = celecoxib | diclofenac_systemic | domperidon | d
 
 file = open('atc_icd_excluded.csv')
 reader = csv.reader(file, delimiter=';')
-headers = next(reader, None)
+headers = next(reader)
 
 codes = load_codes('ATC_Codes.csv')
 data = []
@@ -42,10 +42,16 @@ for row in data:
     score = 0
 
     atc_codes = set()
-    for pos in range(1, 20 + 1):
+    for pos in range(1, 25 + 1):
         row_name = 'atc_%02d' % pos
         if row[row_name]:
             atc_codes.add(row[row_name])
+
+    icd_codes = set()
+    for pos in range(1, 20 + 1):
+        row_name = 'icd10_%02d' % pos
+        if row[row_name]:
+            icd_codes.add(row[row_name])
 
     if sacubitril_valsartan & atc_codes:
         score += 100
@@ -83,20 +89,22 @@ for row in data:
     else:
         hf_positive += 1
 
-    if score >= threshold and any([is_chf(icd) for icd in row.values()]):
+
+    if score >= threshold and any([is_chf(icd) for icd in icd_codes]):
         true_positive += 1
         if heart_failure_contraindicated & atc_codes:
             highrisk_prescription_identified +=1
-    if score >= threshold and not any([is_chf(icd) for icd in row.values()]):
+            #print(row)
+    if score >= threshold and not any([is_chf(icd) for icd in icd_codes]):
         false_positive += 1
         #print(row)
         if heart_failure_contraindicated & atc_codes:
             highrisk_prescription_identified +=1
-    if score < threshold and not any([is_chf(icd) for icd in row.values()]):
+    if score < threshold and not any([is_chf(icd) for icd in icd_codes]):
         true_negative += 1
-    if score < threshold and any([is_chf(icd) for icd in row.values()]):
+    if score < threshold and any([is_chf(icd) for icd in icd_codes]):
         false_negative += 1
-        print(row)
+        #print(row)
 
 print('HF unlikely:', hf_unlikely, 'HF possible:', hf_possible, 'HF probable:', hf_probable, 'HF positive:', hf_positive)
 print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive, 'False Negatives:', false_negative) # validation: HF(true) - true_positive = false_negative

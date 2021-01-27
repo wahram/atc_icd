@@ -99,7 +99,7 @@ for param in params:
             false_negative += 1
 
     original_stdout = sys.stdout  # Save a reference to the original standard output
-    with open('CAD_result2.txt', 'a') as f:
+    with open('CAD_result3.txt', 'a') as f:
         try:
             specificity = true_negative / (true_negative + false_positive)
         except:

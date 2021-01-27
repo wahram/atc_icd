@@ -226,6 +226,13 @@ ezetimib = {
 
 sacubitril_valsartan = {'C09DX04'}
 
+C09CA01		Losartan
+C09CA03		Valsartan
+C09CA04		Irbesartan
+C09CA06		Candesartan
+C09CA07		Telmisartan
+C09CA08		Olmesartanmedoxomil
+
 eplerenon = {'C03DA04'}
 
 spironolacton = {
@@ -374,3 +381,63 @@ rizatriptan = {'N02CC04'}
 sumatriptan = {'N02CC01'}
 
 zolmitriptan = {'N02CC03'}
+
+allopurinol = {
+    'M04AA01',  # Allopurinol
+    'M04AA51'   # Allopurinol, Kombinationen
+}
+
+febuxostat = {'M04AA03'}
+
+probenecid = {'M04AB01'}
+
+benzbromaron = {'M04AB03'}
+
+colchicin = {'M04AC01'}
+
+rasburicase = {'V03AF07'}
+
+xipamid = {
+    'C03BA10',  # Xipamid
+    'C03EA15'   # Xipamid und Triamteren
+}
+
+hydrochlorothiazid = {
+    'C03AA03',  # Hydrochlorothiazid
+    'C03AB03',  # Hydrochlorothiazid und Kalium
+    'C03AX01',  # Hydrochlorothiazid, Kombinationen
+    'C03EA01',  # Hydrochlorothiazid und Kalium sparende Mittel'
+    'C03EA21',  # Hydrochlorothiazid und Triamteren
+    'C03EA41',  # Hydrochlorothiazid und Amilorid
+    'C03EC21',  # Spironolacton und Hydrochlorothiazid
+    'C07BB22',  # Metoprolol und Hydrochlorothiazid
+    'C07BB27',  # Bisoprolol und Hydrochlorothiazid
+    'C07DA25',  # Propranolol, Hydrochlorothiazid und Triamteren
+    'C07DA26',  # Timolol, Hydrochlorothiazid und Amilorid
+    'C08GA23',  # Verapamil und Hydrochlorothiazid
+    'C08GA53',  # Verapamil, Hydrochlorothiazid und Triamteren
+    'C09BA21',  # Captopril und Hydrochlorothiazid
+    'C09BA22',  # Enalapril und Hydrochlorothiazid
+    'C09BA23',  # Lisinopril und Hydrochlorothiazid
+    'C09BA25',  # Ramipril und Hydrochlorothiazid
+    'C09BA26',  # Quinapril und Hydrochlorothiazid
+    'C09BA27',  # Benazepril und Hydrochlorothiazid
+    'C09BA28',  # Cilazapril und Hydrochlorothiazid
+    'C09BA29',  # Fosinopril und Hydrochlorothiazid
+    'C09BA33',  # Moexipril und Hydrochlorothiazid
+    'C09BA35',  # Zofenopril und Hydrochlorothiazid
+    'C09BX03',  # Ramipril, Amlodipin und Hydrochlorothiazid
+    'C09DA21',  # Losartan und Hydrochlorothiazid
+    'C09DA22',  # Eprosartan und Hydrochlorothiazid
+    'C09DA23',  # Valsartan und Hydrochlorothiazid
+    'C09DA24',  # Irbesartan und Hydrochlorothiazid
+    'C09DA26',  # Candesartan und Hydrochlorothiazid
+    'C09DA27',  # Telmisartan und Hydrochlorothiazid
+    'C09DA28',  # Olmesartanmedoxomil und Hydrochlorothiazid
+    'C09DX01',  # Valsartan, Amlodipin und Hydrochlorothiazid
+    'C09DX03',  # Olmesartanmedoxomil, Amlodipin und Hydrochlorothiazid
+    'C09DX06',  # Candesartan, Amlodipin und Hydrochlorothiazid
+    'C09DX07',  # Irbesartan, Amlodipin und Hydrochlorothiazid
+    'C09XA52',  # Aliskiren und Hydrochlorothiazid
+    'C09XA54'   # Aliskiren, Amlodipin und Hydrochlorothiazid
+}
