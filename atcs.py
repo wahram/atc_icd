@@ -483,5 +483,36 @@ hydrochlorothiazid = {
     'C09DX06',  # Candesartan, Amlodipin und Hydrochlorothiazid
     'C09DX07',  # Irbesartan, Amlodipin und Hydrochlorothiazid
     'C09XA52',  # Aliskiren und Hydrochlorothiazid
-    'C09XA54'  # Aliskiren, Amlodipin und Hydrochlorothiazid
+    'C09XA54'   # Aliskiren, Amlodipin und Hydrochlorothiazid
 }
+
+baclofen = {'M03BX01'}
+
+dimenhydrinat = {
+    'A04AB02',  # Dimenhydrinat
+    'A04AB52',  # Dimenhydrinat, Kombinationen
+    'N07CA22'   # Cinnarizin und Dimenhydrinat
+}
+
+levofloxacin = {
+    'A02BD10',  # Lansoprazol, Amoxicillin und Levofloxacin
+    'J01MA12',  # Levofloxacin
+    'J01RA05'   # Levofloxacin und Ornidazol
+}
+
+metoclopramid = {
+    'A03FA01',  # Metoclopramid
+    'A03FA51',  # Metoclopramid, Kombinationen
+    'N02CX69'   # Metoclopramid und Paracetamol
+}
+
+sulpirid = {
+    'N07CA05',  # Sulpirid
+    'N05AL01'   # Sulpirid
+}
+
+lamotrigin = {'N03AX09'}
+
+levetiracetam = {'N03AX14'}
+
+valproat = {'N03AG01'}

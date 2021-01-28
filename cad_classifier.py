@@ -4,7 +4,7 @@ import csv
 from atcs import *
 from icd import is_cad
 
-threshold = 10
+threshold = 100
 
 highrisk_prescription_identified = 0
 cad_unlikely = 0
@@ -60,8 +60,8 @@ for row in data:
     if p2y12_inhibitor & atc_codes:
         score += 15
 
-    if betablocker & atc_codes and calciumkanalblocker & atc_codes:
-        score += 5
+    #if betablocker & atc_codes and calciumkanalblocker & atc_codes:
+    #    score += 5
 
     if statin & atc_codes or ezetimib & atc_codes:
         score += 5

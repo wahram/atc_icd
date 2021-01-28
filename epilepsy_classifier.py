@@ -1,12 +1,12 @@
-# identifies patients with gout and thiazides
+# identifies patients with epilepsy and contraindicated medication
 from atc_codes import load_codes
 import csv
 from atcs import *
 
 highrisk_prescription_identified = 0
 
-gout_treatment = allopurinol | febuxostat | probenecid | benzbromaron | colchicin | rasburicase
-gout_contraindicated = xipamid | hydrochlorothiazid  # thiazides
+epilepsy_treatment = lamotrigin | levetiracetam | valproat
+epilepsy_contraindicated = baclofen | dimenhydrinat | levofloxacin | metoclopramid | sulpirid
 
 file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
@@ -31,7 +31,7 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if gout_treatment & atc_codes and gout_contraindicated & atc_codes:
+    if epilepsy_treatment & atc_codes and epilepsy_contraindicated & atc_codes:
         highrisk_prescription_identified += 1
         print(row)
 
