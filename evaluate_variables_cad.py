@@ -1,5 +1,4 @@
 # establish different specifity and sensitivity pairs with their variables for CAD algorithm
-from atc_codes import load_codes
 import csv
 from atcs import *
 import sys
@@ -12,17 +11,16 @@ true_negative = 0
 false_positive = 0
 false_negative = 0
 
-nitrat = ranolazin | ismn | isdn | molsidomin | pentaerythrityltetranitrat
+"""nitrat = ranolazin | ismn | isdn | molsidomin | pentaerythrityltetranitrat
 p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor
 betablocker = metoprolol | bisoprolol | carvedilol | atenolol | nebivolol
 calciumkanalblocker = verapamil | diltiazem | nifedipin | amlodipin | lercanidipin | felodipin
-statin = lovastatin | pravastatin | simvastatin | atorvastatin | rosuvastatin
+statin = lovastatin | pravastatin | simvastatin | atorvastatin | rosuvastatin"""
 
-file = open('atc_icd_excluded.csv')
+file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
-codes = load_codes('ATC_Codes.csv')
 data = []
 for row in reader:
     data.append(dict(zip(headers, row)))
@@ -60,7 +58,7 @@ for param in params:
             if row[row_name]:
                 icd_codes.add(row[row_name])
 
-        if ranolazin & atc_codes:
+        """if ranolazin & atc_codes:
             score += ranolazin_score
 
         if nitrat & atc_codes:
@@ -85,7 +83,7 @@ for param in params:
             score += statin_score
 
         if ezetimib & atc_codes:
-            score += ezetimib_score
+            score += ezetimib_score"""
 
         if score >= 100 and any([is_cad(icd) for icd in icd_codes]):
             true_positive += 1

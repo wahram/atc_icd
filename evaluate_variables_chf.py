@@ -1,5 +1,4 @@
 # establish different specifity and sensitivity pairs with their variables for CHF algorithm
-from atc_codes import load_codes
 import csv
 from atcs import *
 import sys
@@ -12,21 +11,20 @@ true_negative = 0
 false_positive = 0
 false_negative = 0
 
-aldosteronantagonist = eplerenon | spironolacton
+"""aldosteronantagonist = eplerenon | spironolacton
 betablocker = metoprolol | bisoprolol | carvedilol | atenolol | nebivolol
 dihydropyridin = amlodipin | nifedipin | felodipin | lercanidipin
 herzglykosid = digoxin | digitoxin
 ace_hemmer = captopril | enalapril | lisinopril | ramipril
-at1_antagonist = at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
+at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
 hf_drug_without_herzglykosid = sacubitril_valsartan | eplerenon | betablocker | spironolacton | ivabradin | dihydropyridin | ace_hemmer
 schleifendiuretikum = furosemid | torasemid
-p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor
+p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor"""
 
-file = open('atc_icd_excluded.csv')
+file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
-codes = load_codes('ATC_Codes.csv')
 data = []
 for row in reader:
     data.append(dict(zip(headers, row)))
@@ -67,7 +65,7 @@ for param in params:
             if row[row_name]:
                 icd_codes.add(row[row_name])
 
-        if sacubitril_valsartan & atc_codes:
+        """if sacubitril_valsartan & atc_codes:
             score += sacubitril_valsartan_score
 
         if aldosteronantagonist & atc_codes:
@@ -97,7 +95,7 @@ for param in params:
             score += p2y12_inhibitor_score
 
         if schleifendiuretikum & atc_codes:
-            score += schleifendiuretikum_score
+            score += schleifendiuretikum_score"""
 
         if score >= 100 and any([is_chf(icd) for icd in icd_codes]):
             true_positive += 1

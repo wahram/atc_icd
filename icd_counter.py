@@ -1,7 +1,7 @@
 # calculate how often a specific ICD-Code occurs. Note: I20.0 != I20.00
 import csv
 
-file = open('atc_icd_excluded.csv')
+file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 

@@ -1,7 +1,7 @@
 # print values of interesting diagnoses.
 import csv
 
-file = open('atc_icd_excluded.csv')
+file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 

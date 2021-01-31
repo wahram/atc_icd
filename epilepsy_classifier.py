@@ -1,5 +1,4 @@
 # identifies patients with epilepsy and contraindicated medication
-from atc_codes import load_codes
 import csv
 from atcs import *
 
@@ -12,7 +11,6 @@ file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 
-codes = load_codes('ATC_Codes.csv')
 data = []
 for row in reader:
     data.append(dict(zip(headers, row)))

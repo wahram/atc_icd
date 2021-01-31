@@ -1,5 +1,4 @@
-# calculates probability for having heart failure
-from atc_codes import load_codes
+# calculates probability for having heart failure; add ATCs of drug classes to atcs.py
 import csv
 from atcs import *
 from icd import is_chf
@@ -17,7 +16,7 @@ true_negative = 0
 false_positive = 0
 false_negative = 0
 
-aldosteronantagonist = eplerenon | spironolacton
+"""aldosteronantagonist = eplerenon | spironolacton
 betablocker = metoprolol | bisoprolol | carvedilol | atenolol | nebivolol
 dihydropyridin = amlodipin | nifedipin | felodipin | lercanidipin
 herzglykosid = digoxin | digitoxin
@@ -25,16 +24,15 @@ ace_hemmer = captopril | enalapril | lisinopril | ramipril
 hf_drug_without_herzglykosid = sacubitril_valsartan | eplerenon | betablocker | spironolacton | ivabradin | dihydropyridin | ace_hemmer
 p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor
 schleifendiuretikum = furosemid | torasemid
-at1_antagonist = at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
+at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
 
 heart_failure_contraindicated = celecoxib | diclofenac_systemic | domperidon | dronedaron | eletriptan | etoricoxib \
-                             | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil
+                             | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil"""
 
-file = open('atc_icd_excluded.csv')
+file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
-codes = load_codes('ATC_Codes.csv')
 data = []
 for row in reader:
     data.append(dict(zip(headers, row)))
@@ -54,7 +52,7 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if sacubitril_valsartan & atc_codes:
+    """if sacubitril_valsartan & atc_codes:
         score += 100
 
     if aldosteronantagonist & atc_codes and betablocker & atc_codes:
@@ -76,7 +74,7 @@ for row in data:
         score += 90
 
     if schleifendiuretikum & atc_codes:
-        score += 70
+        score += 70"""
 
 
 

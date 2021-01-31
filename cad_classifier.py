@@ -1,5 +1,4 @@
 # calculates probability for having coronary artery disease
-from atc_codes import load_codes
 import csv
 from atcs import *
 from icd import is_cad
@@ -17,21 +16,20 @@ true_negative = 0
 false_positive = 0
 false_negative = 0
 
-nitrat = ranolazin | ismn | isdn | molsidomin | pentaerythrityltetranitrat
-p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor
-betablocker = metoprolol | bisoprolol | carvedilol | atenolol | nebivolol
-statin = lovastatin | pravastatin | simvastatin | atorvastatin | rosuvastatin
-ace_hemmer = captopril | enalapril | lisinopril | ramipril
-at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
+nitrat = ranolazin | organic_nitrates
+# trapidil
+# platelet_aggregation_inhibitor
+# selective_betablocker
+# statin, ezetimib
+# ace_inhibitor
+# at1_antagonist
 
-cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac_systemic | almotriptan | eletriptan | frovatriptan | naratriptan | \
-                      rizatriptan | sumatriptan | zolmitriptan
+cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac | triptan
 
 file = open('atc_icd_inplausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
-codes = load_codes('ATC_Codes.csv')
 data = []
 for row in reader:
     data.append(dict(zip(headers, row)))
@@ -51,20 +49,9 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if ranolazin & atc_codes or nitrat & atc_codes or trapidil & atc_codes:
+    if platelet_aggregation_inhibitor & atc_codes and (statin & atc_codes or ezetimib & atc_codes) \
+            and (at1_antagonist & atc_codes or ace_inhibitor & atc_codes or selective_betablocker & atc_codes):
         score += 100
-
-    if ass & atc_codes:
-        score += 80
-
-    if p2y12_inhibitor & atc_codes:
-        score += 15
-
-    #if betablocker & atc_codes and calciumkanalblocker & atc_codes:
-    #    score += 5
-
-    if statin & atc_codes or ezetimib & atc_codes:
-        score += 5
 
     if score == 0:
         cad_unlikely += 1
