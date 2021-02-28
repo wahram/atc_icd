@@ -26,7 +26,7 @@ nitrat = ranolazin | organic_nitrates
 
 cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac | triptan
 
-file = open('atc_icd_inplausible_excluded.csv')
+file = open('validation.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -71,19 +71,29 @@ for row in data:
         false_positive += 1
         if cad_contraindicated & atc_codes:
             highrisk_prescription_identified +=1
+            print('False Positive', row)
     if score < threshold and not any([is_cad(icd) for icd in icd_codes]):
         true_negative += 1
     if score < threshold and any([is_cad(icd) for icd in icd_codes]):
         false_negative += 1
 
+try:
+    specificity = true_negative / (true_negative + false_positive)
+except:
+    specificity = 1
+
+try:
+    sensitivity = true_positive / (true_positive + false_negative)
+except:
+    sensitivity = 1
 print('CAD unlikely:', cad_unlikely, 'CAD possible:', cad_possible, 'CAD probable:', cad_probable, 'CAD positive:',
       cad_positive)
 print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
       'False Negatives:', false_negative)  # validation: CAD(true) - true_positive = false_negative
 print('alpha-error:', false_positive / (false_positive + true_negative), 'beta-error:',
-      false_negative / (false_negative + true_positive))  # alpha and beta error
-print('Specificity:', true_negative / (true_negative + false_positive))  # identify healthy person
-print('Sensitivity:', true_positive / (true_positive + false_negative))  # identify ill person
+      false_negative / (false_negative + true_positive))
+print('Specificity:', specificity)
+print('Sensitivity:', sensitivity)
 print('PPV:', true_positive / (true_positive + false_positive))
 print('NPV:', true_negative / (true_negative + false_negative))
 print('FDR:', false_positive / (true_positive + false_positive))

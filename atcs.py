@@ -129,6 +129,15 @@ selective_betablocker = {
     'C09DX05'  # Valsartan und Nebivolol
 }
 
+propranolol = {
+    'C07AA05',  # Propranolol
+    'C07BA05',  # Propranolol und Thiazide
+    'C07CA05',  # Propranolol und andere Diuretika
+    'C07DA25',  # Propranolol, Hydrochlorothiazid und Triamteren
+    'C07EA05',  # Propranolol und Vasodilatatoren
+    'C07FX01'  # Propranolol und andere Kombinationen
+}
+
 statin = {
     'C10AA',  # HMG-CoA-Reduktasehemmer
     'C10AA01',  # Simvastatin
@@ -230,6 +239,10 @@ at1_antagonist = {
     'C10BX10',  # Rosuvastatin und Valsartan
     'C10BX16'  # Rosuvastatin und Fimasartan
 }
+
+sacubitril_valsartan = {'C09DX04'}
+
+eplerenon = {'C03DA04'}
 
 ace_inhibitor = {
     'C09A',  # ACE-HEMMER, REIN
@@ -473,3 +486,38 @@ lamotrigin = {'N03AX09'}
 levetiracetam = {'N03AX14'}
 
 valproat = {'N03AG01'}
+
+carbamazepin = {'N03AF01'}
+
+montelukast = {
+    'R03DC03',  # Montelukast
+    'R03DC53'  # Montelukast, Kombinationen
+}
+
+ics = {
+    'R03BA',  # Glucocorticoide
+    'R03BA01',  # Beclometason
+    'R03BA02',  # Budesonid
+    'R03BA03',  # Flunisolid
+    'R03BA04',  # Betamethason
+    'R03BA05',  # Fluticason
+    'R03BA06',  # Triamcinolon
+    'R03BA07',  # Mometason
+    'R03BA08',  # Ciclesonid
+    'R03BA09',  # Fluticasonfuroat
+    'R03BA19'  # Dexamethason
+}
+
+cromon = {
+'R03BC',  # Antiallergika, exkl. Corticosteroide
+'R03BC01',  # Cromoglicinsäure
+'R03BC03'  # Nedocromil
+}
+
+omalizumab = {'R03DX05'}
+
+mepolizumab = {'R03DX09'}
+
+reslizumab = {'R03DX08'}
+
+benralizumab = {'R03DX10'}

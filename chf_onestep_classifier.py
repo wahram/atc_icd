@@ -1,11 +1,12 @@
-# identifies patients with epilepsy and contraindicated medication
+# identifies patients with chf and contraindications by one-step approach
 import csv
 from atcs import *
 
 highrisk_prescription_identified = 0
 
-epilepsy_treatment = lamotrigin | levetiracetam | valproat | carbamazepin
-epilepsy_contraindicated = baclofen | dimenhydrinat | levofloxacin | metoclopramid | sulpirid
+chf_treatment = sacubitril_valsartan | eplerenon
+chf_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | triptan | etoricoxib \
+                             | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil
 
 file = open('test.csv')
 reader = csv.reader(file, delimiter=';')
@@ -29,7 +30,7 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if epilepsy_treatment & atc_codes and epilepsy_contraindicated & atc_codes:
+    if chf_treatment & atc_codes and chf_contraindicated & atc_codes:
         highrisk_prescription_identified += 1
         print(row)
 

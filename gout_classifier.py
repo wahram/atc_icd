@@ -7,7 +7,7 @@ highrisk_prescription_identified = 0
 gout_treatment = allopurinol | febuxostat | probenecid | benzbromaron | colchicin | rasburicase
 gout_contraindicated = xipamid | hydrochlorothiazid  # thiazides
 
-file = open('atc_icd_inplausible_excluded.csv')
+file = open('test.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 

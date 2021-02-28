@@ -1,11 +1,11 @@
-# identifies patients with epilepsy and contraindicated medication
+# identifies patients with peripheral artery disease and betablocker
 import csv
 from atcs import *
 
 highrisk_prescription_identified = 0
 
-epilepsy_treatment = lamotrigin | levetiracetam | valproat | carbamazepin
-epilepsy_contraindicated = baclofen | dimenhydrinat | levofloxacin | metoclopramid | sulpirid
+pavk_treatment = cilostazol | naftidrofuryl
+pavk_contraindicated = selective_betablocker | propranolol
 
 file = open('test.csv')
 reader = csv.reader(file, delimiter=';')
@@ -29,7 +29,7 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if epilepsy_treatment & atc_codes and epilepsy_contraindicated & atc_codes:
+    if pavk_treatment & atc_codes and pavk_contraindicated & atc_codes:
         highrisk_prescription_identified += 1
         print(row)
 
