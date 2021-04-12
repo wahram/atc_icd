@@ -1,5 +1,7 @@
 # calculates probability for having coronary artery disease
 import csv
+from math import sqrt
+
 from atcs import *
 from icd import is_cad
 
@@ -16,17 +18,10 @@ true_negative = 0
 false_positive = 0
 false_negative = 0
 
-nitrat = ranolazin | organic_nitrates
-# trapidil
-# platelet_aggregation_inhibitor
-# selective_betablocker
-# statin, ezetimib
-# ace_inhibitor
-# at1_antagonist
+cad_treatment = molsidomin | nicorandil | organic_nitrates | ranolazin | trapidil | trimetazidin
+cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac | triptan | fludrocortison
 
-cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac | triptan
-
-file = open('validation.csv')
+file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -49,33 +44,31 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if platelet_aggregation_inhibitor & atc_codes and (statin & atc_codes or ezetimib & atc_codes) \
-            and (at1_antagonist & atc_codes or ace_inhibitor & atc_codes or selective_betablocker & atc_codes):
+    """if cad_treatment & atc_codes \
+            or (platelet_aggregation_inhibitor & atc_codes
+                and (statin & atc_codes or ezetimib & atc_codes)
+                and (at1_antagonist & atc_codes or ace_inhibitor & atc_codes or betablocker & atc_codes)):
+        score += 100"""
+
+    if platelet_aggregation_inhibitor & atc_codes or statin & atc_codes or cad_treatment & atc_codes:
         score += 100
 
-    if score == 0:
-        cad_unlikely += 1
-    elif score <= 50:
-        cad_possible += 1
-    elif score < 100:
-        cad_probable += 1
-    else:
-        cad_positive += 1
+    if score >= threshold and cad_contraindicated & atc_codes:
+        highrisk_prescription_identified += 1
+        print(row)
 
     if score >= threshold and any([is_cad(icd) for icd in icd_codes]):
         true_positive += 1
-        if cad_contraindicated & atc_codes:
-            highrisk_prescription_identified +=1
-            print(row)
+
     if score >= threshold and not any([is_cad(icd) for icd in icd_codes]):
         false_positive += 1
-        if cad_contraindicated & atc_codes:
-            highrisk_prescription_identified +=1
-            print('False Positive', row)
-    if score < threshold and not any([is_cad(icd) for icd in icd_codes]):
-        true_negative += 1
-    if score < threshold and any([is_cad(icd) for icd in icd_codes]):
+
+    if not score >= threshold and any([is_cad(icd) for icd in icd_codes]):
         false_negative += 1
+
+    if not score >= threshold and not any([is_cad(icd) for icd in icd_codes]):
+        true_negative += 1
+
 
 try:
     specificity = true_negative / (true_negative + false_positive)
@@ -86,16 +79,22 @@ try:
     sensitivity = true_positive / (true_positive + false_negative)
 except:
     sensitivity = 1
+
+ppv = true_positive / (true_positive + false_positive)
+npv = true_negative / (true_negative + false_negative)
+
 print('CAD unlikely:', cad_unlikely, 'CAD possible:', cad_possible, 'CAD probable:', cad_probable, 'CAD positive:',
       cad_positive)
 print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
       'False Negatives:', false_negative)  # validation: CAD(true) - true_positive = false_negative
 print('alpha-error:', false_positive / (false_positive + true_negative), 'beta-error:',
       false_negative / (false_negative + true_positive))
-print('Specificity:', specificity)
-print('Sensitivity:', sensitivity)
-print('PPV:', true_positive / (true_positive + false_positive))
-print('NPV:', true_negative / (true_negative + false_negative))
+print('Specificity:', specificity, '+-',
+      1.959964 * sqrt(specificity * (1 - specificity) / (true_negative + false_positive)))  # 95% confidence interval
+print('Sensitivity:', sensitivity, '+-',
+      1.959964 * sqrt(sensitivity * (1 - sensitivity) / (true_positive + false_negative)))
+print('PPV:', ppv, '+-', 1.959964 * sqrt(ppv * (1 - ppv) / (true_positive + false_positive)))
+print('NPV:', npv, '+-', 1.959964 * sqrt(npv * (1 - npv) / (true_negative + false_negative)))
 print('FDR:', false_positive / (true_positive + false_positive))
 print('Precision:', true_positive / (true_positive + false_positive))
 print('Recall:', true_positive / (true_positive + false_negative))

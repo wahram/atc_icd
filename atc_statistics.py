@@ -1,12 +1,11 @@
 # calculate how often a specific drug has been prescribed
 import csv
 
-file = open('atc_icd_inplausible_excluded.csv')
+file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 
-interesting_codes = ['C09AA01', 'C09AA02', 'C09AA03', 'C09AA04', 'C09AA05', 'C09AA06', 'C09AA07', 'C09AA08', 'C09AA09',
-                     'C09AA10', 'C09AA11', 'C09AA12', 'C09AA13', 'C09AA14', 'C09AA15', 'C09AA16']
+interesting_codes = ['C09DX04']
 info = {}
 
 for code in interesting_codes:
@@ -22,4 +21,5 @@ for row in data:
         row_name = 'atc_%02d' % pos
         if row[row_name] in interesting_codes:
             info[row[row_name]] += 1
+            print(row)
 print(info)

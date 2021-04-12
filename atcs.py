@@ -23,6 +23,12 @@ organic_nitrates = {
     'C01DA70'  # Organische Nitrate in Kombination mit Psycholeptika
 }
 
+molsidomin = {'C01DX12'}
+
+nicorandil = {'C01DX16'}
+
+trimetazidin = {'C01EB15'}
+
 trapidil = {'C01DX11'}
 
 platelet_aggregation_inhibitor = {
@@ -136,6 +142,106 @@ propranolol = {
     'C07DA25',  # Propranolol, Hydrochlorothiazid und Triamteren
     'C07EA05',  # Propranolol und Vasodilatatoren
     'C07FX01'  # Propranolol und andere Kombinationen
+}
+
+betablocker = {
+    'C07AB',  # Beta-Adrenozeptorantagonisten, selektiv
+    'C07AB01',  # Practolol
+    'C07AB02',  # Metoprolol
+    'C07AB03',  # Atenolol
+    'C07AB04',  # Acebutolol
+    'C07AB05',  # Betaxolol
+    'C07AB06',  # Bevantolol
+    'C07AB07',  # Bisoprolol
+    'C07AB08',  # Celiprolol
+    'C07AB09',  # Esmolol
+    'C07AB10',  # Epanolol
+    'C07AB11',  # S-Atenolol
+    'C07AB12',  # Nebivolol
+    'C07AB13',  # Talinolol
+    'C07AB14',  # Landiolol
+    'C07BB02',  # Metoprolol und Thiazide
+    'C07BB22',  # Metoprolol und Hydrochlorothiazid
+    'C07BB52',  # Metoprolol und Thiazide, Kombinationen
+    'C07CB02',  # Metoprolol und andere Diuretika
+    'C07CB22',  # Metoprolol und Chlortalidon
+    'C07FB02',  # Metoprolol und Felodipin
+    'C07FB13',  # Metoprolol und Amlodipin
+    'C07FB22',  # Metoprolol und Nifedipin
+    'C07FX03',  # Metoprolol und Acetylsalicylsäure
+    'C07FX05',  # Metoprolol und Ivabradin
+    'C07BB03',  # Atenolol und Thiazide
+    'C07CB03',  # Atenolol und andere Diuretika
+    'C07CB23',  # Atenolol und Chlortalidon
+    'C07CB53',  # Atenolol und andere Diuretika, Kombinationen
+    'C07DB01',  # Atenolol, Thiazide und andere Diuretika
+    'C07FB03',  # Atenolol und Nifedipin
+    'C07FX18',  # Atenolol, Chlortalidon und Hydralazin
+    'C07BB04',  # Acebutolol und Thiazide
+    'C07CB04',  # Acebutolol und andere Diuretika
+    'C07FB26',  # Acebutolol und Nifedipin
+    'C07BB06',  # Bevantolol und Thiazide
+    'C07BB07',  # Bisoprolol und Thiazide
+    'C07BB27',  # Bisoprolol und Hydrochlorothiazid
+    'C07FB07',  # Bisoprolol und Amlodipin
+    'C07FX04',  # Bisoprolol und Acetylsalicylsäure
+    'C09BX02',  # Perindopril und Bisoprolol
+    'C09BX04',  # Perindopril, Bisoprolol und Amlodipin
+    'C09BX05',  # Ramipril und Bisoprolol
+    'C07CB08',  # Celiprolol und andere Diuretika
+    'C07BB12',  # Nebivolol und Thiazide
+    'C07FB12',  # Nebivolol und Amlodipin
+    'C09DX05',  # Valsartan und Nebivolol
+    'C07AA05',  # Propranolol
+    'C07BA05',  # Propranolol und Thiazide
+    'C07CA05',  # Propranolol und andere Diuretika
+    'C07DA25',  # Propranolol, Hydrochlorothiazid und Triamteren
+    'C07EA05',  # Propranolol und Vasodilatatoren
+    'C07FX01'  # Propranolol und andere Kombinationen
+}
+
+sotalol = {
+    'C07AA07',  # Sotalol
+    'C07BA07',  # Sotalol und Thiazide
+    'C07FX02'  # Sotalol und Acetylsalicylsäure
+}
+
+dextrometorphan = {
+    'N07XX59',  # Dextromethorphan, Kombinationen
+    'R05DA09',  # Dextromethorphan
+    'R05DA59'  # Dextromethorphan, Kombinationen
+}
+
+carvedilol = {
+'C07AG02',  # Carvedilol
+'C07BG02',  # Carvedilol und Thiazide
+'C07FX06'  # Carvedilol und Ivabradin
+}
+
+metoprolol = {
+    'C07AB02',  # Metoprolol
+    'C07BB02',  # Metoprolol und Thiazide
+    'C07BB22',  # Metoprolol und Hydrochlorothiazid
+    'C07BB52',  # Metoprolol und Thiazide, Kombinationen
+    'C07CB02',  # Metoprolol und andere Diuretika
+    'C07CB22',  # Metoprolol und Chlortalidon
+    'C07FB02',  # Metoprolol und Felodipin
+    'C07FB13',  # Metoprolol und Amlodipin
+    'C07FB22',  # Metoprolol und Nifedipin
+    'C07FX03',  # Metoprolol und Acetylsalicylsäure
+    'C07FX05',  # Metoprolol und Ivabradin
+}
+
+atenolol = {
+    'C07AB03',  # Atenolol
+    'C07AB11',  # S-Atenolol
+    'C07BB03',  # Atenolol und Thiazide
+    'C07CB03',  # Atenolol und andere Diuretika
+    'C07CB23',  # Atenolol und Chlortalidon
+    'C07CB53',  # Atenolol und andere Diuretika, Kombinationen
+    'C07DB01',  # Atenolol, Thiazide und andere Diuretika
+    'C07FB03',  # Atenolol und Nifedipin
+    'C07FX18',  # Atenolol, Chlortalidon und Hydralazin
 }
 
 statin = {
@@ -342,6 +448,8 @@ celecoxib = {
     'L01XX33'  # Celecoxib
 }
 
+desmopressin = {'H01BA02'}
+
 diclofenac = {
     'M01AB05',  # Diclofenac
     'M01AB55',  # Diclofenac, Kombinationen
@@ -364,9 +472,16 @@ triptan = {
     'N02CC07'  # Frovatriptan
 }
 
+fludrocortison = {
+    'H02AA02',  # Fludrocortison
+    'R01AD64'  # Fludrocortison, Kombinationen
+}
+
 domperidon = {'A03FA03'}
 
 dronedaron = {'C01BD07'}
+
+eletriptan = {'N02CC06'}
 
 flecainid = {'C01BC04'}
 
@@ -458,6 +573,31 @@ hydrochlorothiazid = {
 
 baclofen = {'M03BX01'}
 
+bethanechol = {'N07AB02'}
+
+buspiron = {'N05BE01'}
+
+diphenhydramin = {
+    'A04AB05',  # Diphenhydramin
+    'A04AB55',  # Diphenhydramin, Kombinationen
+    'D04AA32',  # Diphenhydramin
+    'D04AA33',  # Diphenhydraminmethylbromid
+    'D04AA82',  # Diphenhydramin, Kombinationen
+    'N01BX06',  # Diphenhydramin
+    'N05CM20',  # Diphenhydramin
+    'N05CX07',  # Diphenhydramin, Kombinationen
+    'R06AA02',  # Diphenhydramin
+    'R06AA52',  # Diphenhydramin, Kombinationen
+    'S01GX16'  # Diphenhydramin
+}
+
+doxylamin = {
+    'A04AB56',  # Doxylamin, Kombinationen
+    'N05CM21',  # Doxylamin
+    'R06AA09',  # Doxylamin
+    'R06AA59'  # Doxylamin, Kombinationen
+}
+
 dimenhydrinat = {
     'A04AB02',  # Dimenhydrinat
     'A04AB52',  # Dimenhydrinat, Kombinationen
@@ -470,10 +610,21 @@ levofloxacin = {
     'J01RA05'  # Levofloxacin und Ornidazol
 }
 
+methocarbamol = {
+    'M03BA03',  # Methocarbamol
+    'M03BA53',  # Methocarbamol, Kombinationen exkl. Psycholeptika
+    'M03BA73'  # Methocarbamol, Kombinationen mit Psycholeptika
+}
+
 metoclopramid = {
     'A03FA01',  # Metoclopramid
     'A03FA51',  # Metoclopramid, Kombinationen
     'N02CX69'  # Metoclopramid und Paracetamol
+}
+
+ofloxacin_oral = {
+    'J01MA01',  # Ofloxacin
+    'J01RA09'  # Ofloxacin und Ornidazol
 }
 
 sulpirid = {
@@ -481,7 +632,24 @@ sulpirid = {
     'N05AL01'  # Sulpirid
 }
 
+terizidon = {'J04AK03'}
+
 lamotrigin = {'N03AX09'}
+
+brivaracetam = {'N03AX23'}
+
+ethosuximide = {
+'N03AD01',  # Ethosuximid
+'N03AD51'  # Ethosuximid, Kombinationen
+}
+
+lacosamide = {'N03AX18'}
+
+perampanel = {'N03AX22'}
+
+primidone = {'N03AA03'}
+
+zonisamide = {'N03AX15'}
 
 levetiracetam = {'N03AX14'}
 
@@ -508,10 +676,117 @@ ics = {
     'R03BA19'  # Dexamethason
 }
 
+aclidinium = {
+    'R03AL05',  # Formoterol und Aclidiniumbromid
+    'R03BB05'  # Aclidiniumbromid
+}
+
+aminophylline = {
+    'R03DA05',  # Aminophyllin
+    'R03DA55',  # Aminophyllin, Kombinationen
+    'R03DB05'  # Aminophyllin und Sympathomimetika
+}
+
+ciclesonide ={
+    'R01AD13',  # Ciclesonid
+    'R03BA08'  # Ciclesonid
+}
+
+fenoterol = {
+    'G02CA03',  # Fenoterol
+    'R03AC04',  # Fenoterol
+    'R03AL01',  # Fenoterol und Ipratropiumbromid
+    'R03CC04',  # Fenoterol
+    'R03CC54'  # Fenoterol, Kombinationen
+}
+
+formoterol = {
+    'R03AC13',  # Formoterol
+    'R03AK07',  # Formoterol und Budesonid
+    'R03AK08',  # Formoterol und Beclometason
+    'R03AK09',  # Formoterol und Mometason
+    'R03AK11',  # Formoterol und Fluticason
+    'R03AL05',  # Formoterol und Aclidiniumbromid
+    'R03AL07',  # Formoterol und Glycopyrroniumbromid
+    'R03AL09',  # Formoterol, Glycopyrroniumbromid und Beclometason
+    'R03AL10',  # Formoterol und Tiotropiumbromid
+    'R03AL11'  # Formoterol, Glycopyrroniumbromid und Budesonid
+}
+
+indacaterol = {
+    'R03AC18',  # Indacaterol
+    'R03AK14',  # Indacaterol und Mometason
+    'R03AL04',  # Indacaterol und Glycopyrroniumbromid
+    'R03AL12'  # Indacaterol, Glycopyrroiniumbromid und Mometason
+}
+
+ipratropium = {
+    'C01CX10',  # Ipratropiumbromid
+    'R01AX03',  # Ipratropiumbromid
+    'R03AL01',  # Fenoterol und Ipratropiumbromid
+    'R03AL02',  # Salbutamol und Ipratropiumbromid
+    'R03BB01'  # Ipratropiumbromid
+}
+
+olodaterol = {
+    'R03AC19',  # Olodaterol
+    'R03AL06'  # Olodaterol und Tiotropiumbromid
+}
+
+reproterol = {
+    'R03AC15',  # Reproterol
+    'R03AK05',  # Reproterol und Cromoglicinsäure, Dinatriumsalz
+    'R03CC14'  # Reproterol
+}
+
+roflumilast = {'R03DX07'}
+
+salbutamol = {
+    'R03AC02',  # Salbutamol
+    'R03CC02',  # Salbutamol
+    'R03AK13',  # Salbutamol und Beclometason
+    'R03AK04',  # Salbutamol und Cromoglicinsäure, Dinatriumsalz
+    'R03AL02'  # Salbutamol und Ipratropiumbromid
+}
+
+salmeterol = {
+    'R03AC12',  # Salmeterol
+    'R03AK12',  # Salmeterol und Budesonid
+    'R03AK06'  # Salmeterol und Fluticason
+}
+
+terbutaline = {
+    'R03AC03',  # Terbutalin
+    'R03CC03',  # Terbutalin
+    'R03CC53'  # Terbutalin, Kombinationen
+}
+
+theophylline = {
+'C01EB28',  # Theophyllin
+'R03DA04',  # Theophyllin
+'C01EX66',  # Theophyllin, Kombinationen
+'R03DA54',  # Theophyllin, Kombinationen exkl. Psycholeptika
+'R03DA74',  # Theophyllin, Kombinationen mit Psycholeptika
+'R03DB04'  # Theophyllin und Sympathomimetika
+}
+
+tiotropium = {
+    'R03AL10',  # Formoterol und Tiotropiumbromid
+    'R03AL06',  # Olodaterol und Tiotropiumbromid
+    'R03BB04',  # Tiotropiumbromid
+    'R03BB54'  # Tiotropiumbromid, Kombinationen
+}
+
+umeclidinium = {
+    'R03BB07',  # Umeclidiniumbromid
+    'R03AL08',  # Vilanterol, Umeclidiniumbromid und Fluticasonfuroat
+    'R03AL03'  # Vilanterol und Umeclidiniumbromid
+}
+
 cromon = {
-'R03BC',  # Antiallergika, exkl. Corticosteroide
-'R03BC01',  # Cromoglicinsäure
-'R03BC03'  # Nedocromil
+    'R03BC',  # Antiallergika, exkl. Corticosteroide
+    'R03BC01',  # Cromoglicinsäure
+    'R03BC03'  # Nedocromil
 }
 
 omalizumab = {'R03DX05'}

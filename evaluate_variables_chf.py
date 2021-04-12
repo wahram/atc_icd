@@ -21,7 +21,7 @@ hf_drug_without_herzglykosid = sacubitril_valsartan | eplerenon | betablocker | 
 schleifendiuretikum = furosemid | torasemid
 p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor"""
 
-file = open('atc_icd_inplausible_excluded.csv')
+file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 

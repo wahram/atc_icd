@@ -17,7 +17,7 @@ betablocker = metoprolol | bisoprolol | carvedilol | atenolol | nebivolol
 calciumkanalblocker = verapamil | diltiazem | nifedipin | amlodipin | lercanidipin | felodipin
 statin = lovastatin | pravastatin | simvastatin | atorvastatin | rosuvastatin"""
 
-file = open('atc_icd_inplausible_excluded.csv')
+file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -34,7 +34,7 @@ params = list(product(
     [i for i in range(0, 101, 50)],  # betablocker
     [i for i in range(0, 101, 50)],  # calciumkanalblocker
     [i for i in range(0, 101, 50)],  # statin
-    [i for i in range(0, 101, 50)]   # ezetimib
+    [i for i in range(0, 101, 50)]  # ezetimib
 ))
 
 params_max = len(params)

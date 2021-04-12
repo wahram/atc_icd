@@ -7,7 +7,7 @@ highrisk_prescription_identified = 0
 pavk_treatment = cilostazol | naftidrofuryl
 pavk_contraindicated = selective_betablocker | propranolol
 
-file = open('test.csv')
+file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 

@@ -29,7 +29,7 @@ at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan |
 heart_failure_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | triptan | etoricoxib \
                              | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil"""
 
-file = open('atc_icd_inplausible_excluded.csv')
+file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -52,10 +52,10 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    """if sacubitril_valsartan & atc_codes:
+    if sacubitril_valsartan & atc_codes:
         score += 100
 
-    if aldosteronantagonist & atc_codes and betablocker & atc_codes:
+    """if aldosteronantagonist & atc_codes and betablocker & atc_codes:
         score += 100
     elif aldosteronantagonist & atc_codes:
         score += 90
@@ -76,9 +76,6 @@ for row in data:
     if schleifendiuretikum & atc_codes:
         score += 70"""
 
-
-
-
     if score == 0:
         hf_unlikely += 1
     elif score <= 50:
@@ -88,28 +85,30 @@ for row in data:
     else:
         hf_positive += 1
 
-
     if score >= threshold and any([is_chf(icd) for icd in icd_codes]):
         true_positive += 1
-        if heart_failure_contraindicated & atc_codes:
-            highrisk_prescription_identified +=1
-            #print(row)
+        # if heart_failure_contraindicated & atc_codes:
+        #    highrisk_prescription_identified +=1
+        # print(row)
     if score >= threshold and not any([is_chf(icd) for icd in icd_codes]):
         false_positive += 1
-        #print(row)
-        if heart_failure_contraindicated & atc_codes:
-            highrisk_prescription_identified +=1
+        # print(row)
+        # if heart_failure_contraindicated & atc_codes:
+        #    highrisk_prescription_identified +=1
     if score < threshold and not any([is_chf(icd) for icd in icd_codes]):
         true_negative += 1
     if score < threshold and any([is_chf(icd) for icd in icd_codes]):
         false_negative += 1
-        #print(row)
+        # print(row)
 
-print('HF unlikely:', hf_unlikely, 'HF possible:', hf_possible, 'HF probable:', hf_probable, 'HF positive:', hf_positive)
-print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive, 'False Negatives:', false_negative) # validation: HF(true) - true_positive = false_negative
-print('alpha-error:', false_positive / (false_positive + true_negative), 'beta-error:', false_negative / (false_negative + true_positive))  # alpha and beta error
-print('Specificity:', true_negative / (true_negative + false_positive)) # identify healthy person
-print('Sensitivity:', true_positive / (true_positive + false_negative)) # identify ill person
+print('HF unlikely:', hf_unlikely, 'HF possible:', hf_possible, 'HF probable:', hf_probable, 'HF positive:',
+      hf_positive)
+print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
+      'False Negatives:', false_negative)  # validation: HF(true) - true_positive = false_negative
+print('alpha-error:', false_positive / (false_positive + true_negative), 'beta-error:',
+      false_negative / (false_negative + true_positive))  # alpha and beta error
+print('Specificity:', true_negative / (true_negative + false_positive))  # identify healthy person
+print('Sensitivity:', true_positive / (true_positive + false_negative))  # identify ill person
 print('PPV:', true_positive / (true_positive + false_positive))
 print('NPV:', true_negative / (true_negative + false_negative))
 print('FDR:', false_positive / (true_positive + false_positive))

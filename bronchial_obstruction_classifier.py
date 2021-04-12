@@ -1,8 +1,8 @@
-# identifies patients with epilepsy and contraindicated medication
+# identifies patients with bronchial obstruction and contraindications
 import csv
-from math import sqrt
 from atcs import *
-from icd import is_epilepsy, is_bipolar
+from math import sqrt
+from icd import is_bronchial_obstruction
 
 highrisk_prescription_identified = 0
 
@@ -11,9 +11,11 @@ true_negative = 0
 false_positive = 0
 false_negative = 0
 
-epilepsy_treatment = brivaracetam | ethosuximide | lacosamide | levetiracetam | perampanel | primidone | zonisamide
-epilepsy_contraindicated = baclofen | bethanechol | buspiron | dimenhydrinat | diphenhydramin | doxylamin | \
-                           levofloxacin | methocarbamol | metoclopramid | ofloxacin_oral | sulpirid | terizidon
+bronchial_obstruction_treatment = aclidinium | aminophylline | benralizumab | ciclesonide | fenoterol | formoterol |\
+                                  indacaterol | ipratropium | mepolizumab | montelukast | olodaterol | omalizumab |\
+                                  reproterol | reslizumab | roflumilast | salbutamol | salmeterol | terbutaline |\
+                                  theophylline | tiotropium | umeclidinium
+bronchial_obstruction_contraindicated = sotalol | dextrometorphan | carvedilol | metoprolol | propranolol | atenolol
 
 file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
@@ -37,20 +39,17 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if epilepsy_treatment & atc_codes and any([is_epilepsy(icd) for icd in icd_codes]):
+    if bronchial_obstruction_treatment & atc_codes and any([is_bronchial_obstruction(icd) for icd in icd_codes]):
         true_positive += 1
 
-    if epilepsy_treatment & atc_codes and not any([is_epilepsy(icd) for icd in icd_codes]):
+    if bronchial_obstruction_treatment & atc_codes and not any([is_bronchial_obstruction(icd) for icd in icd_codes]):
         false_positive += 1
 
-    if not epilepsy_treatment & atc_codes and any([is_epilepsy(icd) for icd in icd_codes]):
+    if not bronchial_obstruction_treatment & atc_codes and any([is_bronchial_obstruction(icd) for icd in icd_codes]):
         false_negative += 1
 
-    if not epilepsy_treatment & atc_codes and not any([is_epilepsy(icd) for icd in icd_codes]):
+    if not bronchial_obstruction_treatment & atc_codes and not any([is_bronchial_obstruction(icd) for icd in icd_codes]):
         true_negative += 1
-
-    if any([is_epilepsy(icd) for icd in icd_codes]):
-        highrisk_prescription_identified += 1
 
 try:
     specificity = true_negative / (true_negative + false_positive)
@@ -73,4 +72,4 @@ print('NPV:', npv, '+-', 1.959964 * sqrt(npv * (1 - npv) / (true_negative + fals
 print('High risk Prescriptions:', highrisk_prescription_identified)
 
 print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
-      'False Negatives:', false_negative)  # validation: Epilepsy(true) - true_positive = false_negative
+      'False Negatives:', false_negative)  # validation: bronchial_obstruction(true) - true_positive = false_negative

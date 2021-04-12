@@ -1,14 +1,22 @@
 # identifies patients with chf and contraindications by one-step approach
 import csv
 from atcs import *
+from math import sqrt
+from icd import is_chf
 
 highrisk_prescription_identified = 0
 
-chf_treatment = sacubitril_valsartan | eplerenon
-chf_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | triptan | etoricoxib \
-                             | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil
+true_positive = 0
+true_negative = 0
+false_positive = 0
+false_negative = 0
 
-file = open('test.csv')
+chf_treatment = sacubitril_valsartan | eplerenon
+chf_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | eletriptan | etoricoxib \
+                             | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil \
+                             | cilostazol | desmopressin | fludrocortison
+
+file = open('atc_icd_implausible_excluded.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 
@@ -30,8 +38,37 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if chf_treatment & atc_codes and chf_contraindicated & atc_codes:
-        highrisk_prescription_identified += 1
-        print(row)
+    if chf_treatment & atc_codes and any([is_chf(icd) for icd in icd_codes]):
+        true_positive += 1
 
+    if chf_treatment & atc_codes and not any([is_chf(icd) for icd in icd_codes]):
+        false_positive += 1
+
+    if not chf_treatment & atc_codes and any([is_chf(icd) for icd in icd_codes]):
+        false_negative += 1
+
+    if not chf_treatment & atc_codes and not any([is_chf(icd) for icd in icd_codes]):
+        true_negative += 1
+
+try:
+    specificity = true_negative / (true_negative + false_positive)
+except:
+    specificity = 1
+
+try:
+    sensitivity = true_positive / (true_positive + false_negative)
+except:
+    sensitivity = 1
+
+ppv = true_positive / (true_positive + false_positive)
+npv = true_negative / (true_negative + false_negative)
+print('Specificity:', specificity, '+-',
+      1.959964 * sqrt(specificity * (1 - specificity) / (true_negative + false_positive)))  # 95% confidence interval
+print('Sensitivity:', sensitivity, '+-',
+      1.959964 * sqrt(sensitivity * (1 - sensitivity) / (true_positive + false_negative)))
+print('PPV:', ppv, '+-', 1.959964 * sqrt(ppv * (1 - ppv) / (true_positive + false_positive)))
+print('NPV:', npv, '+-', 1.959964 * sqrt(npv * (1 - npv) / (true_negative + false_negative)))
 print('High risk Prescriptions:', highrisk_prescription_identified)
+
+print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
+      'False Negatives:', false_negative)  # validation: CHF(true) - true_positive = false_negative
