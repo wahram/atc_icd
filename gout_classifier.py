@@ -71,3 +71,8 @@ print('High risk Prescriptions:', highrisk_prescription_identified)
 
 print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
       'False Negatives:', false_negative)  # validation: Gout(true) - true_positive = false_negative
+
+precision = ppv
+recall = sensitivity
+print('Precision:', precision, 'Recall:', recall, 'F1', 2 * precision * recall / (precision + recall))
+
