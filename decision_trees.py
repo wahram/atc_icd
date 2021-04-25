@@ -4,6 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn import tree, metrics
+import graphviz
 
 with open('KHK_gold_standard.csv') as file:
     csv_reader = csv.reader(file, delimiter=';')
@@ -21,10 +22,9 @@ with open('KHK_gold_standard.csv') as file:
 khk_X = np.array(khk_X)
 khk_y = np.array(khk_y)
 
-
 print(feature_names, khk_X, khk_y)
 
-X_train, X_test, y_train, y_test = train_test_split(khk_X, khk_y, test_size=0.5, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(khk_X, khk_y, test_size=0.95, random_state=0)
 
 clf = tree.DecisionTreeClassifier(max_depth=3)
 clf = clf.fit(X_train, y_train)
@@ -45,3 +45,10 @@ tree.plot_tree(clf,
                filled=True)
 
 fig.savefig('imagename.png')
+
+dot_data = tree.export_graphviz(clf, out_file=None,
+                                feature_names=feature_names,
+                                class_names=['KHK_negativ', 'KHK-positiv'],
+                                filled=True, rounded=True)
+graph = graphviz.Source(dot_data)
+graph.render("output")
