@@ -50,27 +50,24 @@ for row in data:
                 and (at1_antagonist & atc_codes or ace_inhibitor & atc_codes or betablocker & atc_codes)):
         score += 100"""
 
-    if platelet_aggregation_inhibitor & atc_codes or statin & atc_codes or ezetimib & atc_codes or cad_treatment & atc_codes:
-        score += 100
+    """if platelet_aggregation_inhibitor & atc_codes or statin & atc_codes or ezetimib & atc_codes or cad_treatment & atc_codes:
+        score += 100"""
+
 
     if score >= threshold and cad_contraindicated & atc_codes:
         highrisk_prescription_identified += 1
-
-
 
     if score >= threshold and any([is_cad(icd) for icd in icd_codes]):
         true_positive += 1
 
     if score >= threshold and not any([is_cad(icd) for icd in icd_codes]):
         false_positive += 1
-        print(row)
 
     if not score >= threshold and any([is_cad(icd) for icd in icd_codes]):
         false_negative += 1
 
     if not score >= threshold and not any([is_cad(icd) for icd in icd_codes]):
         true_negative += 1
-
 
 try:
     specificity = true_negative / (true_negative + false_positive)

@@ -213,9 +213,9 @@ dextrometorphan = {
 }
 
 carvedilol = {
-'C07AG02',  # Carvedilol
-'C07BG02',  # Carvedilol und Thiazide
-'C07FX06'  # Carvedilol und Ivabradin
+    'C07AG02',  # Carvedilol
+    'C07BG02',  # Carvedilol und Thiazide
+    'C07FX06'  # Carvedilol und Ivabradin
 }
 
 metoprolol = {
@@ -639,8 +639,8 @@ lamotrigin = {'N03AX09'}
 brivaracetam = {'N03AX23'}
 
 ethosuximide = {
-'N03AD01',  # Ethosuximid
-'N03AD51'  # Ethosuximid, Kombinationen
+    'N03AD01',  # Ethosuximid
+    'N03AD51'  # Ethosuximid, Kombinationen
 }
 
 lacosamide = {'N03AX18'}
@@ -687,7 +687,7 @@ aminophylline = {
     'R03DB05'  # Aminophyllin und Sympathomimetika
 }
 
-ciclesonide ={
+ciclesonide = {
     'R01AD13',  # Ciclesonid
     'R03BA08'  # Ciclesonid
 }
@@ -762,12 +762,12 @@ terbutaline = {
 }
 
 theophylline = {
-'C01EB28',  # Theophyllin
-'R03DA04',  # Theophyllin
-'C01EX66',  # Theophyllin, Kombinationen
-'R03DA54',  # Theophyllin, Kombinationen exkl. Psycholeptika
-'R03DA74',  # Theophyllin, Kombinationen mit Psycholeptika
-'R03DB04'  # Theophyllin und Sympathomimetika
+    'C01EB28',  # Theophyllin
+    'R03DA04',  # Theophyllin
+    'C01EX66',  # Theophyllin, Kombinationen
+    'R03DA54',  # Theophyllin, Kombinationen exkl. Psycholeptika
+    'R03DA74',  # Theophyllin, Kombinationen mit Psycholeptika
+    'R03DB04'  # Theophyllin und Sympathomimetika
 }
 
 tiotropium = {
@@ -796,3 +796,86 @@ mepolizumab = {'R03DX09'}
 reslizumab = {'R03DX08'}
 
 benralizumab = {'R03DX10'}
+
+calcium_channelblocker = {
+    'C08',  # CALCIUMKANALBLOCKER
+    'C08C',  # SELEKTIVE CALCIUMKANALBLOCKER MIT VORWIEGENDER GEFÄSSWIRKUNG
+    'C08CA',  # Dihydropyridin-Derivate
+    'C08CA01',  # Amlodipin
+    'C08CA02',  # Felodipin
+    'C08CA03',  # Isradipin
+    'C08CA04',  # Nicardipin
+    'C08CA05',  # Nifedipin
+    'C08CA06',  # Nimodipin
+    'C08CA07',  # Nisoldipin
+    'C08CA08',  # Nitrendipin
+    'C08CA09',  # Lacidipin
+    'C08CA10',  # Nilvadipin
+    'C08CA11',  # Manidipin
+    'C08CA12',  # Barnidipin
+    'C08CA13',  # Lercanidipin
+    'C08CA14',  # Cilnidipin
+    'C08CA15',  # Benidipin
+    'C08CA16',  # Clevidipin
+    'C08CA51',  # Amlodipin und Celecoxib
+    'C08CA55',  # Nifedipin, Kombinationen
+    'C08CX',  # Andere selektive Calciumkanalblocker mit vorwiegender Gefäßwirkung
+    'C08CX01',  # Mibefradil
+    'C08D',  # SELEKTIVE CALCIUMKANALBLOCKER MIT VORWIEGENDER HERZWIRKUNG
+    'C08DA',  # Phenylalkylamin-Derivate
+    'C08DA01',  # Verapamil
+    'C08DA02',  # Gallopamil
+    'C08DA51',  # Verapamil, Kombinationen
+    'C08DA81',  # Verapamil in Kombination mit Chinidin
+    'C08DB',  # Benzothiazepin-Derivate
+    'C08DB01',  # Diltiazem
+    'C08E',  # NICHTSELEKTIVE CALCIUMKANALBLOCKER
+    'C08EA',  # Phenylalkylamin-Derivate
+    'C08EA01',  # Fendilin
+    'C08EA02',  # Bepridil
+    'C08EX',  # Andere nichtselektive Calciumkanalblocker
+    'C08EX01',  # Lidoflazin
+    'C08EX02',  # Perhexilin
+    'C08G',  # CALCIUMKANALBLOCKER UND DIURETIKA
+    'C08GA',  # Calciumkanalblocker und Diuretika
+    'C08GA01',  # Nifedipin und Diuretika
+    'C08GA02',  # Amlodipin und Diuretika
+    'C08GA23',  # Verapamil und Hydrochlorothiazid
+    'C08GA53',  # Verapamil, Hydrochlorothiazid und Triamteren
+    'C07FB',  # Beta-Adrenozeptorantagonisten und Calciumkanalblocker
+    'C07FB02',  # Metoprolol und Felodipin
+    'C07FB03',  # Atenolol und Nifedipin
+    'C07FB07',  # Bisoprolol und Amlodipin
+    'C07FB12',  # Nebivolol und Amlodipin
+    'C07FB13',  # Metoprolol und Amlodipin
+    'C07FB22',  # Metoprolol und Nifedipin
+    'C07FB26',  # Acebutolol und Nifedipin
+    'C09BB',  # ACE-Hemmer und Calciumkanalblocker
+    'C09BB02',  # Enalapril und Lercanidipin
+    'C09BB03',  # Lisinopril und Amlodipin
+    'C09BB04',  # Perindopril und Amlodipin
+    'C09BB05',  # Ramipril und Felodipin
+    'C09BB06',  # Enalapril und Nitrendipin
+    'C09BB07',  # Ramipril und Amlodipin
+    'C09BB10',  # Trandolapril und Verapamil
+    'C09BB12',  # Delapril und Manidipin
+    'C09BX01',  # Perindopril, Amlodipin und Indapamid
+    'C09BX03',  # Ramipril, Amlodipin und Hydrochlorothiazid
+    'C09BX04',  # Perindopril, Bisoprolol und Amlodipin
+    'C09DB',  # Angiotensin-II-Rezeptorblocker (ARB) und Calciumkanalblocker
+    'C09DB01',  # Valsartan und Amlodipin
+    'C09DB02',  # Olmesartanmedoxomil und Amlodipin
+    'C09DB04',  # Telmisartan und Amlodipin
+    'C09DB05',  # Irbesartan und Amlodipin
+    'C09DB06',  # Losartan und Amlodipin
+    'C09DB07',  # Candesartan und Amlodipin
+    'C09DB08',  # Valsartan und Lercanidipin
+    'C09DB09',  # Fimasartan und Amlodipin
+    'C09DX01',  # Valsartan, Amlodipin und Hydrochlorothiazid
+    'C09DX03',  # Olmesartanmedoxomil, Amlodipin und Hydrochlorothiazid
+    'C09DX06',  # Candesartan, Amlodipin und Hydrochlorothiazid
+    'C09DX07',  # Irbesartan, Amlodipin und Hydrochlorothiazid
+    'C09XA53',  # Aliskiren und Amlodipin
+    'C09XA54',  # Aliskiren, Amlodipin und Hydrochlorothiazid
+    'C05AE03'  # Diltiazem
+}
