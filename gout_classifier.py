@@ -37,6 +37,9 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
+    if gout_treatment & atc_codes and gout_contraindicated & atc_codes and any([is_gout(icd) for icd in icd_codes]):
+        highrisk_prescription_identified += 1
+
     if gout_treatment & atc_codes and any([is_gout(icd) for icd in icd_codes]):
         true_positive += 1
 

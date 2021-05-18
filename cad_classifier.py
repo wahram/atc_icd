@@ -93,12 +93,16 @@ print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False
       'False Negatives:', false_negative)  # validation: CAD(true) - true_positive = false_negative
 print('alpha-error:', false_positive / (false_positive + true_negative), 'beta-error:',
       false_negative / (false_negative + true_positive))
-print('Specificity:', specificity, '+-',
-      1.959964 * sqrt(specificity * (1 - specificity) / (true_negative + false_positive)))  # 95% confidence interval
-print('Sensitivity:', sensitivity, '+-',
-      1.959964 * sqrt(sensitivity * (1 - sensitivity) / (true_positive + false_negative)))
-print('PPV:', ppv, '+-', 1.959964 * sqrt(ppv * (1 - ppv) / (true_positive + false_positive)))
-print('NPV:', npv, '+-', 1.959964 * sqrt(npv * (1 - npv) / (true_negative + false_negative)))
+print('Specificity:', specificity,
+      specificity - 1.959964 * sqrt(specificity * (1 - specificity) / (true_negative + false_positive)),
+      specificity + 1.959964 * sqrt(specificity * (1 - specificity) / (true_negative + false_positive)))  # 95% confidence interval
+print('Sensitivity:', sensitivity,
+      sensitivity - 1.959964 * sqrt(sensitivity * (1 - sensitivity) / (true_positive + false_negative)),
+      sensitivity + 1.959964 * sqrt(sensitivity * (1 - sensitivity) / (true_positive + false_negative)))
+print('PPV:', ppv, ppv - 1.959964 * sqrt(ppv * (1 - ppv) / (true_positive + false_positive)),
+      ppv + 1.959964 * sqrt(ppv * (1 - ppv) / (true_positive + false_positive)))
+print('NPV:', npv, npv - 1.959964 * sqrt(npv * (1 - npv) / (true_negative + false_negative)),
+      npv + 1.959964 * sqrt(npv * (1 - npv) / (true_negative + false_negative)))
 print('FDR:', false_positive / (true_positive + false_positive))
 print('Precision:', true_positive / (true_positive + false_positive))
 print('Recall:', true_positive / (true_positive + false_negative))

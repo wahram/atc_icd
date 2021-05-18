@@ -39,6 +39,10 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
+    if bronchial_obstruction_treatment & atc_codes and bronchial_obstruction_contraindicated & atc_codes\
+            and any([is_bronchial_obstruction(icd) for icd in icd_codes]):
+        highrisk_prescription_identified += 1
+
     if bronchial_obstruction_treatment & atc_codes and any([is_bronchial_obstruction(icd) for icd in icd_codes]):
         true_positive += 1
 
