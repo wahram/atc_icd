@@ -197,7 +197,10 @@ betablocker = {
     'C07CA05',  # Propranolol und andere Diuretika
     'C07DA25',  # Propranolol, Hydrochlorothiazid und Triamteren
     'C07EA05',  # Propranolol und Vasodilatatoren
-    'C07FX01'  # Propranolol und andere Kombinationen
+    'C07FX01',  # Propranolol und andere Kombinationen
+    'C07AG02',  # Carvedilol
+    'C07BG02',  # Carvedilol und Thiazide
+    'C07FX06'  # Carvedilol und Ivabradin
 }
 
 sotalol = {
