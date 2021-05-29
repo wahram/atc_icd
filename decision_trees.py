@@ -13,13 +13,13 @@ with open('KHK_gold_standard.csv') as file:
 
     # Header contains feature names
     row = next(csv_reader)
-    feature_names = row[1:]
+    feature_names = row[2:]
 
     # Load dataset, and target classes
     khk_X, khk_y = [], []
     for row in csv_reader:
-        khk_X.append(row[1:8])
-        khk_y.append(row[8])  # target value KHK
+        khk_X.append(row[2:])
+        khk_y.append(row[1])  # target value KHK
 
 khk_X = np.array(khk_X)
 khk_y = np.array(khk_y)
@@ -27,7 +27,7 @@ khk_y = np.array(khk_y)
 
 print(feature_names, khk_X, khk_y)
 
-X_train, X_test, y_train, y_test = train_test_split(khk_X, khk_y, test_size=0.5, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(khk_X, khk_y, test_size=0.6666, random_state=0)
 
 clf = tree.DecisionTreeClassifier(criterion='entropy', max_depth=3, min_samples_leaf=1)
 clf = clf.fit(X_train, y_train)
@@ -40,6 +40,9 @@ print("Classification report")
 print(metrics.classification_report(y_test, y_pred), "\n")
 print("Confusion matrix")
 print(metrics.confusion_matrix(y_test, y_pred), "\n")
+print("Confusion matrix train cohort")
+z_pred = clf.predict(X_train)
+print(metrics.confusion_matrix(y_train, z_pred), "\n")
 
 sklearn.metrics.plot_confusion_matrix(clf, X_test, y_test, cmap=plt.cm.Blues,)
 plt.show()
@@ -47,7 +50,7 @@ plt.show()
 
 dot_data = tree.export_graphviz(clf, out_file=None,
                                 feature_names=feature_names,
-                                class_names=['KHK_negativ', 'KHK-positiv'],
+                                class_names=['CAD_positive', 'CAD_negative'],
                                 filled=True, rounded=True)
 graph = graphviz.Source(dot_data)
 graph.render("image")
@@ -64,15 +67,4 @@ tree.plot_tree(clf,
 
 fig.savefig('imagename.png')"""
 
-# dot -Tpng tree.dot -o tree.png in den Terminal, out_file="tree.dot" benennen;
-
-"""importances = clf.feature_importances_
-
-importances = clf.feature_importances_
-indices = np.argsort(importances)
-
-plt.title('Feature Importances')
-plt.barh(range(len(indices)), importances[indices], color='b', align='center')
-plt.yticks(range(len(indices)), [feature_names[i] for i in indices])
-plt.xlabel('Relative Importance')
-plt.show()"""
+# dot -Tpdf tree.dot -o tree.pdf in den Terminal; out_file="tree.dot" benennen statt None;

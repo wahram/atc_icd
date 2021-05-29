@@ -1,6 +1,5 @@
 # one hot encodes csv
 import csv
-
 import numpy as np
 
 np.set_printoptions(threshold=np.inf)
