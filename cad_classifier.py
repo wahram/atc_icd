@@ -1,6 +1,7 @@
 # calculates probability for having coronary artery disease
 import csv
-from math import sqrt
+
+import statsmodels.api as statsmodels
 
 from atcs import *
 from icd import is_cad
@@ -21,7 +22,7 @@ false_negative = 0
 cad_treatment = molsidomin | nicorandil | organic_nitrates | ranolazin | trapidil | trimetazidin
 cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac | triptan | fludrocortison
 
-file = open('atc_icd_implausible_excluded_cad_validated.csv')
+file = open('atc_icd_implausible_excluded_validated.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -94,15 +95,13 @@ print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False
 print('alpha-error:', false_positive / (false_positive + true_negative), 'beta-error:',
       false_negative / (false_negative + true_positive))
 print('Specificity:', specificity,
-      specificity - 1.959964 * sqrt(specificity * (1 - specificity) / (true_negative + false_positive)),
-      specificity + 1.959964 * sqrt(specificity * (1 - specificity) / (true_negative + false_positive)))  # 95% confidence interval
+      statsmodels.stats.proportion_confint(true_negative, true_negative + false_positive, alpha=0.05, method='wilson'))
 print('Sensitivity:', sensitivity,
-      sensitivity - 1.959964 * sqrt(sensitivity * (1 - sensitivity) / (true_positive + false_negative)),
-      sensitivity + 1.959964 * sqrt(sensitivity * (1 - sensitivity) / (true_positive + false_negative)))
-print('PPV:', ppv, ppv - 1.959964 * sqrt(ppv * (1 - ppv) / (true_positive + false_positive)),
-      ppv + 1.959964 * sqrt(ppv * (1 - ppv) / (true_positive + false_positive)))
-print('NPV:', npv, npv - 1.959964 * sqrt(npv * (1 - npv) / (true_negative + false_negative)),
-      npv + 1.959964 * sqrt(npv * (1 - npv) / (true_negative + false_negative)))
+      statsmodels.stats.proportion_confint(true_positive, true_positive + false_negative, alpha=0.05, method='wilson'))
+print('PPV:', ppv,
+      statsmodels.stats.proportion_confint(true_positive, true_positive + false_positive, alpha=0.05, method='wilson'))
+print('NPV:', npv,
+      statsmodels.stats.proportion_confint(true_negative, true_negative + false_negative, alpha=0.05, method='wilson'))
 print('FDR:', false_positive / (true_positive + false_positive))
 print('Precision:', true_positive / (true_positive + false_positive))
 print('Recall:', true_positive / (true_positive + false_negative))

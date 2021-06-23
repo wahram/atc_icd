@@ -527,8 +527,6 @@ benzbromaron = {'M04AB03'}
 
 colchicin = {'M04AC01'}
 
-rasburicase = {'V03AF07'}
-
 xipamid = {
     'C03BA10',  # Xipamid
     'C03EA15'  # Xipamid und Triamteren

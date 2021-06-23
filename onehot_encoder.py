@@ -1,6 +1,8 @@
-# one hot encodes csv
+# one hot encodes csv. Headers in csv show all possible ATCs in the whole dataset.
 import csv
 import numpy as np
+
+number_of_patients = 3506
 
 np.set_printoptions(threshold=np.inf)
 
@@ -14,7 +16,7 @@ for header in headers:
     mapping[header] = i
     i += 1
 
-data = np.zeros((3506, len(headers)))
+data = np.zeros((number_of_patients, len(headers)))
 
 i = 0
 for row in reader:

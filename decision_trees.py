@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import tree, metrics
 import graphviz
 
-with open('KHK_gold_standard.csv') as file:
+with open('gout_gold_standard_deleted.csv') as file:
     csv_reader = csv.reader(file, delimiter=';')
 
     # Header contains feature names
@@ -48,9 +48,9 @@ sklearn.metrics.plot_confusion_matrix(clf, X_test, y_test, cmap=plt.cm.Blues,)
 plt.show()
 
 
-dot_data = tree.export_graphviz(clf, out_file=None,
+dot_data = tree.export_graphviz(clf, out_file="tree_gout_deleted.dot",
                                 feature_names=feature_names,
-                                class_names=['CAD_positive', 'CAD_negative'],
+                                class_names=['gout_positive', 'gout_negative'],
                                 filled=True, rounded=True)
 graph = graphviz.Source(dot_data)
 graph.render("image")
@@ -67,4 +67,4 @@ tree.plot_tree(clf,
 
 fig.savefig('imagename.png')"""
 
-# dot -Tpdf tree.dot -o tree.pdf in den Terminal; out_file="tree.dot" benennen statt None;
+# dot -Tpng -Gdpi=600 tree.dot -o tree.png into the terminal; out_file="tree.dot" instead of None;

@@ -1,15 +1,14 @@
 # calculates probability for having heart failure; add ATCs of drug classes to atcs.py
 import csv
+
+import statsmodels.api as statsmodels
+
 from atcs import *
 from icd import is_chf
 
 threshold = 100
 
 highrisk_prescription_identified = 0
-hf_unlikely = 0
-hf_possible = 0
-hf_probable = 0
-hf_positive = 0
 
 true_positive = 0
 true_negative = 0
@@ -76,45 +75,43 @@ for row in data:
     if schleifendiuretikum & atc_codes:
         score += 70"""
 
-    if score == 0:
-        hf_unlikely += 1
-    elif score <= 50:
-        hf_possible += 1
-    elif score < 100:
-        hf_probable += 1
-    else:
-        hf_positive += 1
-
     if score >= threshold and any([is_chf(icd) for icd in icd_codes]):
         true_positive += 1
-        # if heart_failure_contraindicated & atc_codes:
-        #    highrisk_prescription_identified +=1
-        # print(row)
+
     if score >= threshold and not any([is_chf(icd) for icd in icd_codes]):
         false_positive += 1
-        # print(row)
-        # if heart_failure_contraindicated & atc_codes:
-        #    highrisk_prescription_identified +=1
+
     if score < threshold and not any([is_chf(icd) for icd in icd_codes]):
         true_negative += 1
+
     if score < threshold and any([is_chf(icd) for icd in icd_codes]):
         false_negative += 1
-        # print(row)
 
-print('HF unlikely:', hf_unlikely, 'HF possible:', hf_possible, 'HF probable:', hf_probable, 'HF positive:',
-      hf_positive)
+try:
+    specificity = true_negative / (true_negative + false_positive)
+except:
+    specificity = 1
+
+try:
+    sensitivity = true_positive / (true_positive + false_negative)
+except:
+    sensitivity = 1
+
+ppv = true_positive / (true_positive + false_positive)
+npv = true_negative / (true_negative + false_negative)
+print('Specificity:', specificity,
+      statsmodels.stats.proportion_confint(true_negative, true_negative + false_positive, alpha=0.05, method='wilson'))
+print('Sensitivity:', sensitivity,
+      statsmodels.stats.proportion_confint(true_positive, true_positive + false_negative, alpha=0.05, method='wilson'))
+print('PPV:', ppv,
+      statsmodels.stats.proportion_confint(true_positive, true_positive + false_positive, alpha=0.05, method='wilson'))
+print('NPV:', npv,
+      statsmodels.stats.proportion_confint(true_negative, true_negative + false_negative, alpha=0.05, method='wilson'))
+print('High risk Prescriptions:', highrisk_prescription_identified)
+
 print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
-      'False Negatives:', false_negative)  # validation: HF(true) - true_positive = false_negative
-print('alpha-error:', false_positive / (false_positive + true_negative), 'beta-error:',
-      false_negative / (false_negative + true_positive))  # alpha and beta error
-print('Specificity:', true_negative / (true_negative + false_positive))  # identify healthy person
-print('Sensitivity:', true_positive / (true_positive + false_negative))  # identify ill person
-print('PPV:', true_positive / (true_positive + false_positive))
-print('NPV:', true_negative / (true_negative + false_negative))
-print('FDR:', false_positive / (true_positive + false_positive))
-print('Precision:', true_positive / (true_positive + false_positive))
-print('Recall:', true_positive / (true_positive + false_negative))
-print('Positive:', true_positive + false_negative)
-print('Negative:', true_negative + false_positive)
+      'False Negatives:', false_negative)  # validation: CAD(true) - true_positive = false_negative
 
-print(highrisk_prescription_identified)
+precision = ppv
+recall = sensitivity
+print('Precision:', precision, 'Recall:', recall, 'F1', 2 * precision * recall / (precision + recall))
