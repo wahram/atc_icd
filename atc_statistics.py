@@ -1,7 +1,7 @@
 # calculate how often a specific drug has been prescribed
 import csv
 
-file = open('atc_icd_implausible_excluded.csv')
+file = open('atc_icd_implausible_excluded_validated_deleted.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 

@@ -880,3 +880,65 @@ calcium_channelblocker = {
     'C09XA54',  # Aliskiren, Amlodipin und Hydrochlorothiazid
     'C05AE03'  # Diltiazem
 }
+
+herzglykoside = {
+    'C01A',  # HERZGLYKOSIDE
+    'C01AA',  # Digitalisglykoside
+    'C01AA01',  # Acetyldigitoxin
+    'C01AA02',  # Acetyldigoxin
+    'C01AA03',  # Digitalisblätter
+    'C01AA04',  # Digitoxin
+    'C01AA05',  # Digoxin
+    'C01AA06',  # Lanatosid C
+    'C01AA07',  # Deslanosid
+    'C01AA08',  # Metildigoxin
+    'C01AA09',  # Gitoformat
+    'C01AA10',  # Pengitoxin
+    'C01AA20',  # Kombinationen
+    'C01AA52',  # Acetyldigoxin, Kombinationen
+    'C01AA54',  # Digitoxin, Kombinationen
+    'C01AA55',  # Digoxin, Kombinationen
+    'C01AA56',  # Lanatosid C, Kombinationen
+    'C01AA58',  # Metildigoxin, Kombinationen
+    'C01AB',  # Scillaglykoside
+    'C01AB01',  # Proscillaridin
+    'C01AB02',  # Meproscillarin
+    'C01AB51',  # Proscillaridin, Kombinationen
+    'C01AC',  # Strophantusglykoside
+    'C01AC01',  # g-Strophanthin
+    'C01AC03',  # Cymarin
+    'C01AC04',  # k-Strophanthin
+    'C01AC05',  # Strophantustinktur/-öl
+    'C01AC51',  # g-Strophanthin, Kombinationen exkl. Psycholeptika
+    'C01AC54',  # k-Strophanthin, Kombinationen exkl. Psycholeptika
+    'C01AC55',  # Strophantustinktur/-öl, Kombinationen exkl. Psycholeptika
+    'C01AC71',  # g-Strophanthin, Kombinationen mit Psycholeptika
+    'C01AH',  # Homöopathische und anthroposophische Zubereitungen mit Herzglykosiden
+    'C01AH01',  # Strophantus gratus
+    'C01AH20',  # Kombinationen
+    'C01AH50',  # Kombinationen mit anderen Mitteln
+    'C01AP',  # Andere pflanzliche Zubereitungen mit Herzglykosiden
+    'C01AP01',  # Maiglöckchenkraut
+    'C01AP03',  # Meerzwiebel
+    'C01AP30',  # Kombinationen
+    'C01AP50',  # Andere Pflanzenglykoside, Kombinationen
+    'C01AP51',  # Maiglöckchenkraut, Kombinationen
+    'C01AP52',  # Oleanderglykoside, Kombinationen
+    'C01AP53',  # Meerzwiebel, Kombinationen
+    'C01AX',  # Andere Herzglykoside
+    'C01AX02',  # Peruvosid
+}
+
+ivabradin = {
+    'C01EB17',  # Ivabradin
+    'C07FX05',  # Metoprolol und Ivabradin
+    'C07FX06'  # Carvedilol und Ivabradin
+}
+
+spironolacton = {
+    'C03DA01',  # Spironolacton
+    'C03EC01',  # Spironolacton und Low-ceiling-Diuretika
+    'C03EC21',  # Spironolacton und Hydrochlorothiazid
+    'C03EC41',  # Spironolacton und Bendroflumethiazid
+    'C03ED01'  # Spironolacton und Furosemid
+}
