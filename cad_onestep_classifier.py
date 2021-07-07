@@ -38,8 +38,8 @@ for row in data:
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if cad_treatment & atc_codes and cad_contraindicated & atc_codes:
-        highrisk_prescription_identified +=1
+    if cad_contraindicated & atc_codes and any([is_cad(icd) for icd in icd_codes]) and cad_treatment & atc_codes:
+        highrisk_prescription_identified += 1
 
     if cad_treatment & atc_codes and any([is_cad(icd) for icd in icd_codes]):
         true_positive += 1

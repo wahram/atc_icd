@@ -18,7 +18,7 @@ epilepsy_contraindicated = baclofen | bethanechol | buspiron | dimenhydrinat | d
                            levofloxacin | methocarbamol | metoclopramid | ofloxacin_oral | sulpirid | terizidon
 dual_use = carbamazepin | lamotrigin | valproat
 
-file = open('atc_icd_implausible_excluded_validated.csv')
+file = open('atc_icd_implausible_excluded_validated_deleted.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 
@@ -35,15 +35,13 @@ for row in data:
             atc_codes.add(row[row_name])
 
     icd_codes = set()
-    for pos in range(1, 25 + 1):
+    for pos in range(1, 20 + 1):
         row_name = 'icd10_%02d' % pos
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    """if epilepsy_treatment & atc_codes and epilepsy_contraindicated & atc_codes and any([is_epilepsy(icd) for icd in icd_codes]):
-        highrisk_prescription_identified += 1"""
-    if epilepsy_treatment & atc_codes and any([is_bipolar(icd) for icd in icd_codes]):
-        highrisk_prescription_identified
+    #if epilepsy_treatment & atc_codes and epilepsy_contraindicated & atc_codes and any([is_epilepsy(icd) for icd in icd_codes]):
+    #    highrisk_prescription_identified += 1
 
     if epilepsy_treatment & atc_codes and any([is_epilepsy(icd) for icd in icd_codes]):
         true_positive += 1

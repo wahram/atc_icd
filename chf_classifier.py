@@ -1,4 +1,4 @@
-# calculates probability for having heart failure; add ATCs of drug classes to atcs.py
+# calculates probability for having heart failure
 import csv
 
 import statsmodels.api as statsmodels
@@ -15,20 +15,13 @@ true_negative = 0
 false_positive = 0
 false_negative = 0
 
-"""aldosteronantagonist = eplerenon | spironolacton
-betablocker = metoprolol | bisoprolol | carvedilol | atenolol | nebivolol
-dihydropyridin = amlodipin | nifedipin | felodipin | lercanidipin
-herzglykosid = digoxin | digitoxin
-ace_hemmer = captopril | enalapril | lisinopril | ramipril
-hf_drug_without_herzglykosid = sacubitril_valsartan | eplerenon | betablocker | spironolacton | ivabradin | dihydropyridin | ace_hemmer
-p2y12_inhibitor = clopidogrel | prasugrel | ticagrelor
-schleifendiuretikum = furosemid | torasemid
-at1_antagonist = losartan | valsartan | irbesartan | candesartan | telmisartan | olmesartan
+chf_treatment = sacubitril_valsartan | eplerenon
+chf_class_two = herzglykoside | ivabradin | spironolacton | furosemid | torasemid
 
-heart_failure_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | triptan | etoricoxib \
-                             | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil"""
+chf_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | triptan | etoricoxib \
+                             | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil
 
-file = open('atc_icd_implausible_excluded.csv')
+file = open('atc_icd_implausible_excluded_validated_deleted.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -46,34 +39,18 @@ for row in data:
             atc_codes.add(row[row_name])
 
     icd_codes = set()
-    for pos in range(1, 20 + 1):
+    for pos in range(1, 25 + 1):
         row_name = 'icd10_%02d' % pos
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if sacubitril_valsartan & atc_codes:
+    if chf_treatment & atc_codes:
         score += 100
 
-    """if aldosteronantagonist & atc_codes and betablocker & atc_codes:
+    if len(chf_class_two & atc_codes) >= 2:
         score += 100
-    elif aldosteronantagonist & atc_codes:
-        score += 90
-
-    if ivabradin & atc_codes and (betablocker & atc_codes or dihydropyridin & atc_codes):
-        score += 100
-    elif ivabradin & atc_codes:
-        score += 95
-
-    if herzglykosid & atc_codes and len(hf_drug_without_herzglykosid & atc_codes) >= 2:
-        score += 100
-    elif herzglykosid & atc_codes and hf_drug_without_herzglykosid & atc_codes:
-        score += 50
-
-    if ace_hemmer & atc_codes and betablocker & atc_codes and (ass & atc_codes or p2y12_inhibitor & atc_codes):
-        score += 90
-
-    if schleifendiuretikum & atc_codes:
-        score += 70"""
+    if score >= threshold and chf_contraindicated & atc_codes and any([is_chf(icd) for icd in icd_codes]):
+        highrisk_prescription_identified += 1
 
     if score >= threshold and any([is_chf(icd) for icd in icd_codes]):
         true_positive += 1
@@ -110,8 +87,9 @@ print('NPV:', npv,
 print('High risk Prescriptions:', highrisk_prescription_identified)
 
 print('True Positives:', true_positive, 'True Negatives:', true_negative, 'False Positives:', false_positive,
-      'False Negatives:', false_negative)  # validation: CAD(true) - true_positive = false_negative
-
+      'False Negatives:', false_negative)  # validation: CHF(true) - true_positive = false_negative
+print('Positive:', true_positive + false_negative)
+print('Negative:', true_negative + false_positive)
 precision = ppv
 recall = sensitivity
 print('Precision:', precision, 'Recall:', recall, 'F1', 2 * precision * recall / (precision + recall))

@@ -19,7 +19,7 @@ bronchial_obstruction_treatment = aclidinium | aminophylline | benralizumab | ci
                                   theophylline | tiotropium | umeclidinium
 bronchial_obstruction_contraindicated = sotalol | dextrometorphan | carvedilol | metoprolol | propranolol | atenolol
 
-file = open('atc_icd_implausible_excluded_validated.csv')
+file = open('atc_icd_implausible_excluded_validated_deleted.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 
@@ -36,13 +36,13 @@ for row in data:
             atc_codes.add(row[row_name])
 
     icd_codes = set()
-    for pos in range(1, 25 + 1):
+    for pos in range(1, 20 + 1):
         row_name = 'icd10_%02d' % pos
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if bronchial_obstruction_treatment & atc_codes and bronchial_obstruction_contraindicated & atc_codes\
-            and any([is_bronchial_obstruction(icd) for icd in icd_codes]):
+    if bronchial_obstruction_contraindicated & atc_codes and any([is_bronchial_obstruction(icd) for icd in icd_codes]) \
+            and bronchial_obstruction_treatment & atc_codes:
         highrisk_prescription_identified += 1
 
     if bronchial_obstruction_treatment & atc_codes and any([is_bronchial_obstruction(icd) for icd in icd_codes]):

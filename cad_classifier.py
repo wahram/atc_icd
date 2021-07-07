@@ -22,7 +22,7 @@ false_negative = 0
 cad_treatment = molsidomin | nicorandil | organic_nitrates | ranolazin | trapidil | trimetazidin
 cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac | triptan | fludrocortison
 
-file = open('atc_icd_implausible_excluded_validated.csv')
+file = open('atc_icd_implausible_excluded_validated_deleted.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -40,31 +40,24 @@ for row in data:
             atc_codes.add(row[row_name])
 
     icd_codes = set()
-    for pos in range(1, 21 + 1):
+    for pos in range(1, 20 + 1):
         row_name = 'icd10_%02d' % pos
         if row[row_name]:
             icd_codes.add(row[row_name])
 
-    if cad_treatment & atc_codes \
+    """if cad_treatment & atc_codes \
             or (platelet_aggregation_inhibitor & atc_codes
                 and (statin & atc_codes or ezetimib & atc_codes)
                 and (at1_antagonist & atc_codes or ace_inhibitor & atc_codes or betablocker & atc_codes)):
-        score += 100
+        score += 100  # high specificity version"""
 
-    """if platelet_aggregation_inhibitor & atc_codes or statin & atc_codes or ezetimib & atc_codes or cad_treatment & atc_codes:
-        score += 100"""
-
-    """if cad_treatment & atc_codes or platelet_aggregation_inhibitor & atc_codes or statin & atc_codes \
-            or ezetimib & atc_codes or ace_inhibitor & atc_codes or at1_antagonist & atc_codes \
-            or betablocker & atc_codes:
-        score += 100"""
-
-    if score >= threshold and cad_contraindicated & atc_codes:
-        highrisk_prescription_identified += 1
-        print(row)
+    if cad_treatment & atc_codes or platelet_aggregation_inhibitor & atc_codes or statin & atc_codes or ezetimib & atc_codes:
+        score += 100  # high sensitivity version
 
     if score >= threshold and any([is_cad(icd) for icd in icd_codes]):
         true_positive += 1
+        if cad_contraindicated & atc_codes:
+            highrisk_prescription_identified += 1
 
     if score >= threshold and not any([is_cad(icd) for icd in icd_codes]):
         false_positive += 1
