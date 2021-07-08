@@ -49,7 +49,7 @@ for row in data:
             atc_codes.add(row[row_name])
 
     icd_codes = set()
-    for pos in range(1, 25 + 1):
+    for pos in range(1, 20 + 1):
         row_name = 'icd10_%02d' % pos
         if row[row_name]:
             icd_codes.add(row[row_name])
