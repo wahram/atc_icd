@@ -1,6 +1,6 @@
-# Identification of disease related contraindications from prescription data alone
+# Identification of diagnosis-related contraindications from prescription data alone
 
-Collection scripts for data analysis and classification algorithms.
+Collection scripts for data analysis and classification algorithms described in *'Use of medication data alone to identify diagnoses and related contraindications: application of algorithms to close a common documentation gap'* by Andrikyan *et al.*
 
 ### Dependencies
 * Python 3.9.5
