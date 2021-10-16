@@ -1,5 +1,3 @@
-
-
 def is_chf(icd):
     # print(icd)
     if not icd:
@@ -68,8 +66,8 @@ def is_bronchial_obstruction(icd):
     if not icd:
         return False
     return icd.startswith('J44') \
-        or icd.startswith('J45') \
-        or icd.startswith('J46')
+           or icd.startswith('J45') \
+           or icd.startswith('J46')
 
 
 """
@@ -251,7 +249,8 @@ def is_s01ed(atc):
 def is_r03ak(atc):
     if not atc:
         return False
-    return atc.startswith('R03AK')  # R03AK Adrenergics in combination with corticosteroids or other drugs, excl. anticholinergics
+    return atc.startswith \
+        ('R03AK')  # R03AK Adrenergics in combination with corticosteroids or other drugs, excl. anticholinergics
 
 
 def is_n02ab(atc):
@@ -276,4 +275,52 @@ def is_b05ba(atc):
     if not atc:
         return False
     return atc.startswith('B05BA')  # B05BA Solutions for parenteral nutrition
+
+
+def is_s01xa(atc):
+    if not atc:
+        return False
+    return atc.startswith('S01XA')  # S01XA Other ophthalmologicals
+
+
+def is_a10bj(atc):
+    if not atc:
+        return False
+    return atc.startswith('A10BJ')  # A10BJ Glucagon-like peptide-1 (GLP-1) analogues
+
+
+def is_n06ab(atc):
+    if not atc:
+        return False
+    return atc.startswith('N06AB')  # N06AB Selective serotonin reuptake inhibitors
+
+
+def is_a10bh(atc):
+    if not atc:
+        return False
+    return atc.startswith('A10BH')  # A10BH Dipeptidyl peptidase 4 (DPP-4) inhibitors
+
+
+def is_b01af(atc):
+    if not atc:
+        return False
+    return atc.startswith('B01AF')  # B01AF Direct factor Xa inhibitors
+
+
+def is_n03aa(atc):
+    if not atc:
+        return False
+    return atc.startswith('N03AA')  # N03AA Barbiturates and derivatives
+
+
+def is_r06ax(atc):
+    if not atc:
+        return False
+    return atc.startswith('R06AX')  # R06AX Other antihistamines for systemic use
+
+
+def is_m04ac(atc):
+    if not atc:
+        return False
+    return atc.startswith('M04AC')  # M04AC Preparations with no effect on uric acid metabolism
 
