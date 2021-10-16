@@ -18,7 +18,7 @@ epilepsy_contraindicated = baclofen | bethanechol | buspiron | dimenhydrinat | d
                            levofloxacin | methocarbamol | metoclopramid | ofloxacin_oral | sulpirid | terizidon
 dual_use = carbamazepin | lamotrigin | valproat
 
-file = open('atc_icd_implausible_excluded_validated_deleted.csv')
+file = open('test_1847_geputzt.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 

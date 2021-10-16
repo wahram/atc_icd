@@ -22,7 +22,7 @@ false_negative = 0
 cad_treatment = molsidomin | nicorandil | organic_nitrates | ranolazin | trapidil | trimetazidin
 cad_contraindicated = celecoxib | etoricoxib | parecoxib | diclofenac | triptan | fludrocortison
 
-file = open('atc_icd_implausible_excluded_validated_deleted.csv')
+file = open('test_1847_geputzt.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 

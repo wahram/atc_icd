@@ -18,7 +18,7 @@ chf_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | eletrip
                              | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil \
                              | cilostazol | desmopressin | fludrocortison
 
-file = open('atc_icd_implausible_excluded_validated_deleted.csv')
+file = open('test_1847_geputzt.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 

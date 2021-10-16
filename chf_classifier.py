@@ -21,7 +21,7 @@ chf_class_two = herzglykoside | ivabradin | spironolacton | furosemid | torasemi
 chf_contraindicated = celecoxib | diclofenac | domperidon | dronedaron | triptan | etoricoxib \
                              | flecainid | methylphenidat | moxonidin | parecoxib | pioglitazon | tadalafil
 
-file = open('atc_icd_implausible_excluded_validated_deleted.csv')
+file = open('test_1847_geputzt.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader)
 
@@ -47,13 +47,13 @@ for row in data:
     if chf_treatment & atc_codes:
         score += 100
 
-    if len(chf_class_two & atc_codes) >= 2:
-        score += 100
-    if score >= threshold and chf_contraindicated & atc_codes and any([is_chf(icd) for icd in icd_codes]):
-        highrisk_prescription_identified += 1
+    if len(chf_class_two & atc_codes) >= 1:
+        score += 100  # high sensitivity version len is >= 1, high specificity len >= 2
 
     if score >= threshold and any([is_chf(icd) for icd in icd_codes]):
         true_positive += 1
+        if chf_contraindicated & atc_codes:
+            highrisk_prescription_identified += 1
 
     if score >= threshold and not any([is_chf(icd) for icd in icd_codes]):
         false_positive += 1

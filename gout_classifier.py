@@ -16,7 +16,7 @@ false_negative = 0
 gout_treatment = allopurinol | benzbromaron | colchicin | febuxostat | probenecid
 gout_contraindicated = xipamid | hydrochlorothiazid | torasemid
 
-file = open('atc_icd_implausible_excluded_validated_deleted.csv')
+file = open('test_1847_geputzt.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 
