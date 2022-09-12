@@ -54,6 +54,9 @@ for row in data:
     if cad_treatment & atc_codes or platelet_aggregation_inhibitor & atc_codes or statin & atc_codes or ezetimib & atc_codes:
         score += 100  # high sensitivity version
 
+    """if cad_treatment & atc_codes or platelet_aggregation_inhibitor & atc_codes or statin & atc_codes or ezetimib & atc_codes or ace_inhibitor & atc_codes or at1_antagonist & atc_codes or betablocker & atc_codes:
+        score += 100  # generate specificity and sensitivity pairs"""
+
     if score >= threshold and any([is_cad(icd) for icd in icd_codes]):
         true_positive += 1
         if cad_contraindicated & atc_codes:

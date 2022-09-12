@@ -40,6 +40,8 @@ for row in data:
 
     if gout_treatment & atc_codes and any([is_gout(icd) for icd in icd_codes]):
         true_positive += 1
+        if gout_contraindicated & atc_codes:
+            highrisk_prescription_identified += 1
 
     if gout_treatment & atc_codes and not any([is_gout(icd) for icd in icd_codes]):
         false_positive += 1

@@ -1,11 +1,11 @@
 # calculate how often a specific drug has been prescribed
 import csv
 
-file = open('atc_icd_implausible_excluded_validated_deleted.csv')
+file = open('test_2338.csv')
 reader = csv.reader(file, delimiter=';')
 headers = next(reader, None)
 
-interesting_codes = ['C09DX04']
+interesting_codes = ['A02BC']
 info = {}
 
 for code in interesting_codes:
@@ -21,5 +21,5 @@ for row in data:
         row_name = 'atc_%02d' % pos
         if row[row_name] in interesting_codes:
             info[row[row_name]] += 1
-            print(row)
+            # print(row)
 print(info)
